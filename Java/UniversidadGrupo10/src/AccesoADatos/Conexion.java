@@ -17,6 +17,9 @@ public class Conexion {
     }
     
     public static Connection conectar(){
+        
+        if(conexion == null){
+        
         try {
             // TODO code application logic here
 
@@ -27,7 +30,9 @@ public class Conexion {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Error de Conexion");
         }
-        return conexion;
+        
     }
+        return conexion;
+        }
     
 }
