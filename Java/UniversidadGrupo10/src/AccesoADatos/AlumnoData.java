@@ -93,6 +93,46 @@ public class AlumnoData {
     
     }
     
+    
+    
+    
+    public void modificarEstado(int dni){
+    
+        String sql = "UPDATE alumno SET estado = 0 WHERE dni = ?";
+        
+        
+        try {
+            
+            PreparedStatement modificar = conex.prepareStatement(sql);
+            modificar.setInt(1, dni);
+            
+            modificar.executeUpdate();
+            
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Error al modificar estado");
+        }
+        
+    
+    }
+    
+    
+    public void habilitarEstado(int dni){
+        String sql = "UPDATE alumno SET estado = 1 WHERE dni = ?";
+        
+        try {
+            
+            PreparedStatement estado = conex.prepareStatement(sql);
+            estado.setInt(1, dni);
+            estado.executeUpdate();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al buscar el Estado");
+        }
+    
+    }
+    
+    
+    
     public void eliminarAlumno(int id){
         
         String sql = "DELETE FROM alumno JOIN inscripcion ON (alumno.idAumno = inscripcion.idAlumno) WHERE idAlumno = ?";
@@ -111,8 +151,7 @@ public class AlumnoData {
             JOptionPane.showMessageDialog(null, "Error al eliminar el alumno. ");
         }
         
-       
-     
+ 
     }
     
     

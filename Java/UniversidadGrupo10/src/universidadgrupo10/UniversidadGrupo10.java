@@ -19,7 +19,7 @@ public class UniversidadGrupo10 {
                 
         //Probando carga de Alumno
         
-        Alumno alumno = new Alumno(40334343, "Quevedo", "Matias", LocalDate.of(2001,9,11), true);
+        //Alumno alumno = new Alumno(40334343, "Quevedo", "Matias", LocalDate.of(2001,9,11), true);
     
        //objetoAlumno.guardarAlumno(alumno);
         
@@ -30,8 +30,10 @@ public class UniversidadGrupo10 {
         
         //objetoAlumno.eliminarAlumno();
         
-        objetoAlumno.actualizarDatosAlumno(alumno);
+        //objetoAlumno.actualizarDatosAlumno(alumno);
         
+        //objetoAlumno.modificarEstado(41570334);
+        //objetoAlumno.habilitarEstado(41570334);
         
     }
     
