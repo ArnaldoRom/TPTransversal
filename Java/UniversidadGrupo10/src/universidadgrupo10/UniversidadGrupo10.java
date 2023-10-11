@@ -16,19 +16,21 @@ public class UniversidadGrupo10 {
         
         //creamos objeto Alumno para poder hacer las pruebas.
         AlumnoData objetoAlumno = new AlumnoData();
-        
-        
+                
         //Probando carga de Alumno
-        /*
-        Alumno alumno = new Alumno(40334343, "eaaaa", "Matias", LocalDate.of(2005,10,11), true);
+        
+        Alumno alumno = new Alumno(40334343, "Quevedo", "Matias", LocalDate.of(2001,9,11), true);
     
-        objetoAlumno.guardarAlumno(alumno);
-        */
+       //objetoAlumno.guardarAlumno(alumno);
+        
         
         //Probando el buscador de alumno por id
-        objetoAlumno.buscarAlumno(3);
+        //objetoAlumno.buscarAlumnoPorDni(40590255);
         
         
+        //objetoAlumno.eliminarAlumno();
+        
+        objetoAlumno.actualizarDatosAlumno(alumno);
         
         
     }

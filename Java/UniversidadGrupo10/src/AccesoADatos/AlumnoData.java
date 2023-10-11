@@ -39,21 +39,20 @@ public class AlumnoData {
     }
     
     
-    public Alumno buscarAlumno(int id){
+    public Alumno buscarAlumnoPorDni(int dni){
     
-        String sql = "SELECT dni, apellido, nombre, fechaDeNacimiento, estado FROM alumno WHERE idAlumno = ? ";
+        String sql = "SELECT dni, apellido, nombre, fechaDeNacimiento, estado FROM alumno WHERE dni = ? ";
         Alumno obtenerAlumno = null;
         
         try {
             
             PreparedStatement buscar = conex.prepareStatement(sql);
-            buscar.setInt(1, id);
+            buscar.setInt(1, dni);
             
             ResultSet lista = buscar.executeQuery();
             
             while(lista.next()){
             
-                int dni = lista.getInt("dni");
                 String apellido = lista.getString("apellido");
                 String nombre = lista.getString("nombre");
                 LocalDate fecha = lista.getDate("fechaDeNacimiento").toLocalDate();
@@ -68,9 +67,56 @@ public class AlumnoData {
             JOptionPane.showMessageDialog(null, "Error al buscar el alumno");
         }
         
-        System.out.println( obtenerAlumno);
+        
         return obtenerAlumno;
         
     }
+    
+   
+    public void actualizarDatosAlumno(Alumno alumno){
+    
+        String sql = "UPDATE alumno SET dni=?,apellido=?,nombre=?,fechaDeNacimiento=? WHERE idAlumno = ? OR dni = ?";
+        try {
+            
+            PreparedStatement update = conex.prepareStatement(sql);
+            update.setInt(1, alumno.getDni());
+            update.setString(2, alumno.getApellido());
+            update.setString(3, alumno.getNombre());
+            update.setDate(4, Date.valueOf(alumno.getFechaDeNacimiento()));
+            update.setInt(5, alumno.getIdAlumno());        
+            update.setInt(6, alumno.getDni());
+            update.executeUpdate();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar datos.");
+        }
+    
+    }
+    
+    public void eliminarAlumno(int id){
+        
+        String sql = "DELETE FROM alumno JOIN inscripcion ON (alumno.idAumno = inscripcion.idAlumno) WHERE idAlumno = ?";
+        PreparedStatement borrar;
+        
+        try {
+            
+            borrar = conex.prepareStatement(sql);
+            borrar.setInt(1, id);
+            borrar.executeUpdate();
+           
+            
+            
+        } catch (SQLException ex) {
+            
+            JOptionPane.showMessageDialog(null, "Error al eliminar el alumno. ");
+        }
+        
+       
+     
+    }
+    
+    
+    
+    
     
 }
