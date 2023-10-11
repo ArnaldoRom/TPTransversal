@@ -44,8 +44,6 @@ public class AlumnoData {
         String sql = "SELECT dni, apellido, nombre, fechaDeNacimiento, estado FROM alumno WHERE idAlumno = ? ";
         Alumno obtenerAlumno = null;
         
-       
-        
         try {
             
             PreparedStatement buscar = conex.prepareStatement(sql);
@@ -70,8 +68,9 @@ public class AlumnoData {
             JOptionPane.showMessageDialog(null, "Error al buscar el alumno");
         }
         
-        
+        System.out.println( obtenerAlumno);
         return obtenerAlumno;
+        
     }
     
 }

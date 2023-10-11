@@ -26,7 +26,7 @@ public class UniversidadGrupo10 {
         */
         
         //Probando el buscador de alumno por id
-        //objetoAlumno.buscarAlumno(3);
+        objetoAlumno.buscarAlumno(3);
         
         
         
