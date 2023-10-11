@@ -14,10 +14,22 @@ public class UniversidadGrupo10 {
    
     public static void main(String[] args) {
         
-        Alumno alumno = new Alumno(40334343, "eaaaa", "Matias", LocalDate.of(2005,10,11), true);
+        //creamos objeto Alumno para poder hacer las pruebas.
+        AlumnoData objetoAlumno = new AlumnoData();
         
-        AlumnoData carga = new AlumnoData();
-        carga.guardarAlumno(alumno);
+        
+        //Probando carga de Alumno
+        /*
+        Alumno alumno = new Alumno(40334343, "eaaaa", "Matias", LocalDate.of(2005,10,11), true);
+    
+        objetoAlumno.guardarAlumno(alumno);
+        */
+        
+        //Probando el buscador de alumno por id
+        //objetoAlumno.buscarAlumno(3);
+        
+        
+        
         
     }
     
