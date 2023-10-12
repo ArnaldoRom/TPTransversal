@@ -99,33 +99,36 @@ public class AlumnoData {
     
     
     
-    public void desabilitarEstado(int dni){
+    public void desabilitarEstado(int id){
     
-        String sql = "UPDATE alumno SET estado = 0 WHERE dni = ?";
+        String sql = "UPDATE alumno SET estado = 0 WHERE idAlumno = ?";
+        
         
         
         try {
             
             PreparedStatement modificar = conex.prepareStatement(sql);
-            modificar.setInt(1, dni);
+            modificar.setInt(1, id);
             
             modificar.executeUpdate();
+            
+            
             
         } catch (SQLException ex) {
            JOptionPane.showMessageDialog(null, "Error al modificar estado");
         }
         
-    
+        
     }
     
     
-    public void habilitarEstado(int dni){
-        String sql = "UPDATE alumno SET estado = 1 WHERE dni = ?";
+    public void habilitarEstado(int id){
+        String sql = "UPDATE alumno SET estado = 1 WHERE idAlumno = ?";
         
         try {
             
             PreparedStatement estado = conex.prepareStatement(sql);
-            estado.setInt(1, dni);
+            estado.setInt(1, id);
             estado.executeUpdate();
             
         } catch (SQLException ex) {
@@ -136,31 +139,7 @@ public class AlumnoData {
     
     
     
-    public void eliminarAlumno(int id){
-        
-        String sql = "DELETE FROM alumno  WHERE idAlumno = ?";
-        String sqll = "DELETE FROM inscripcion  WHERE idAlumno = ?";
-        PreparedStatement borrar;
-        
-        try {
-            PreparedStatement boorrar2 = conex.prepareStatement(sqll);
-            boorrar2.setInt(1, id);
-            boorrar2.executeUpdate();
-            
-            borrar = conex.prepareStatement(sql);
-            borrar.setInt(1, id);
-            borrar.executeUpdate();
-            
-        
-            
-            
-        } catch (SQLException ex) {
-            
-            JOptionPane.showMessageDialog(null, "Error al eliminar el alumno. ");
-        }
-        
- 
-    }
+   
     
     public List<Alumno> listarAlumnos(){
      

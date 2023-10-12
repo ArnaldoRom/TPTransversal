@@ -21,7 +21,7 @@ public class UniversidadGrupo10 {
         //Probando carga de Alumno
         
         //Alumno alumno = new Alumno(40334343, "Quevedo", "Matias", LocalDate.of(2001,9,11), true);
-    
+
        // objetoAlumno.guardarAlumno(alumno);
             
         
@@ -37,15 +37,15 @@ public class UniversidadGrupo10 {
         */
         
         
-        //Probando la sentencia eliminar
-        //objetoAlumno.eliminarAlumno(2);
+        
         
         //probando la sentencia Actualizar Datos del alumno
         //objetoAlumno.actualizarDatosAlumno(alumno);
+
         
-        //modificadores de estado
-        //objetoAlumno.desabilitarEstado(41570334);
-        //objetoAlumno.habilitarEstado(41570334);
+        //modificadores de estado RECIBEN ID
+        //objetoAlumno.desabilitarEstado(1);
+        //objetoAlumno.habilitarEstado(1);
         
         
         //Probando el listar Alumnos ACTIVOS.
