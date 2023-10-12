@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-10-2023 a las 02:17:33
+-- Tiempo de generación: 12-10-2023 a las 02:31:36
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.1.17
 
@@ -18,8 +18,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `universidad`
+-- Base de datos: `universidadgrupo10`
 --
+CREATE DATABASE IF NOT EXISTS `universidadgrupo10` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `universidadgrupo10`;
 
 -- --------------------------------------------------------
 
@@ -42,8 +44,9 @@ CREATE TABLE `alumno` (
 
 INSERT INTO `alumno` (`idAlumno`, `dni`, `apellido`, `nombre`, `fechaDeNacimiento`, `estado`) VALUES
 (1, 45983444, 'Quiroga', 'Jose', '2004-10-05', 1),
-(2, 42983444, 'Del Castillo', 'Rosa', '2002-03-20', 1),
-(3, 41570334, 'Akerman', 'Lucia', '2001-09-15', 1);
+(3, 41570334, 'Akerman', 'Lucia', '2001-09-15', 1),
+(4, 40590255, 'Ejarque', 'Matias', '2005-10-11', 1),
+(9, 40334343, 'Quevedo', 'Matias', '2001-09-11', 1);
 
 -- --------------------------------------------------------
 
@@ -53,7 +56,7 @@ INSERT INTO `alumno` (`idAlumno`, `dni`, `apellido`, `nombre`, `fechaDeNacimient
 
 CREATE TABLE `inscripcion` (
   `idInscripto` int(11) NOT NULL,
-  `nota` int(11) NOT NULL,
+  `nota` double NOT NULL,
   `idAlumno` int(11) NOT NULL,
   `idMateria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -65,8 +68,6 @@ CREATE TABLE `inscripcion` (
 INSERT INTO `inscripcion` (`idInscripto`, `nota`, `idAlumno`, `idMateria`) VALUES
 (1, 9, 1, 1),
 (2, 4, 1, 2),
-(3, 3, 2, 3),
-(4, 5, 2, 4),
 (5, 7, 3, 2),
 (6, 10, 3, 3);
 
@@ -127,7 +128,7 @@ ALTER TABLE `materia`
 -- AUTO_INCREMENT de la tabla `alumno`
 --
 ALTER TABLE `alumno`
-  MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `inscripcion`
