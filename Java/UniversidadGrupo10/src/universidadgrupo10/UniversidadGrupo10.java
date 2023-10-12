@@ -22,18 +22,29 @@ public class UniversidadGrupo10 {
         //Alumno alumno = new Alumno(40334343, "Quevedo", "Matias", LocalDate.of(2001,9,11), true);
     
        //objetoAlumno.guardarAlumno(alumno);
+       
+        
+        //Juanjo pasion! att el panda
         
         
         //Probando el buscador de alumno por id
         //objetoAlumno.buscarAlumnoPorDni(40590255);
         
+        //Probando la sentencia eliminar
+        //objetoAlumno.eliminarAlumno(2);
         
-        //objetoAlumno.eliminarAlumno();
-        
+        //probando la sentencia Actualizar Datos del alumno
         //objetoAlumno.actualizarDatosAlumno(alumno);
         
-        //objetoAlumno.modificarEstado(41570334);
+        //modificadores de estado
+        //objetoAlumno.desabilitarEstado(41570334);
         //objetoAlumno.habilitarEstado(41570334);
+        
+        
+        //probando el listar Alumnos ACTIVOS.
+        //objetoAlumno.listarAlumnos();
+        
+        
         
     }
     

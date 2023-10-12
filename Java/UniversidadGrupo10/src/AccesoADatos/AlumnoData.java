@@ -4,6 +4,10 @@ package AccesoADatos;
 import Dominio.Alumno;
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -95,8 +99,7 @@ public class AlumnoData {
     
     
     
-    
-    public void modificarEstado(int dni){
+    public void desabilitarEstado(int dni){
     
         String sql = "UPDATE alumno SET estado = 0 WHERE dni = ?";
         
@@ -135,15 +138,20 @@ public class AlumnoData {
     
     public void eliminarAlumno(int id){
         
-        String sql = "DELETE FROM alumno JOIN inscripcion ON (alumno.idAumno = inscripcion.idAlumno) WHERE idAlumno = ?";
+        String sql = "DELETE FROM alumno  WHERE idAlumno = ?";
+        String sqll = "DELETE FROM inscripcion  WHERE idAlumno = ?";
         PreparedStatement borrar;
         
         try {
+            PreparedStatement boorrar2 = conex.prepareStatement(sqll);
+            boorrar2.setInt(1, id);
+            boorrar2.executeUpdate();
             
             borrar = conex.prepareStatement(sql);
             borrar.setInt(1, id);
             borrar.executeUpdate();
-           
+            
+        
             
             
         } catch (SQLException ex) {
@@ -154,7 +162,36 @@ public class AlumnoData {
  
     }
     
-    
+    public List<Alumno> listarAlumnos(){
+     
+        List<Alumno> listaAlumno = new ArrayList<>();
+        
+        
+        try {
+            
+            String sql = "SELECT * FROM alumno WHERE estado = 1";
+            PreparedStatement lista = conex.prepareStatement(sql);
+            ResultSet lista2 = lista.executeQuery();
+            
+            while (lista2.next()){
+               Alumno alumno = new Alumno();
+               alumno.setIdAlumno(lista2.getInt("idAlumno"));
+               alumno.setDni(lista2.getInt("dni"));
+               alumno.setApellido(lista2.getString("apellido"));
+               alumno.setNombre(lista2.getString("nombre"));
+               alumno.setFechaDeNacimiento(lista2.getDate("fechaDeNacimiento").toLocalDate());
+               alumno.setEstado(lista2.getBoolean("estado"));
+                
+               listaAlumno.add(alumno);
+            }
+            
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al listar los alumnos.");
+        }
+        System.out.println(listaAlumno);
+        return listaAlumno;
+    }
     
     
     
