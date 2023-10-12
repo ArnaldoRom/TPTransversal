@@ -12,7 +12,7 @@ public class Conexion {
     private static final String CONTRASENA="";
     private static Connection conexion;
     
-    public Conexion(){        
+    private Conexion(){        
         
     }
     
@@ -21,7 +21,7 @@ public class Conexion {
         if(conexion == null){
         
         try {
-            // TODO code application logic here
+            
 
             Class.forName("org.mariadb.jdbc.Driver");
             conexion=DriverManager.getConnection(URL+BD,USUARIO,CONTRASENA);
