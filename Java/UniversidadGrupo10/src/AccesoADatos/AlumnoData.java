@@ -45,7 +45,7 @@ public class AlumnoData {
     
     public Alumno buscarAlumnoPorDni(int dni){
     
-        String sql = "SELECT dni, apellido, nombre, fechaDeNacimiento, estado FROM alumno WHERE dni = ? ";
+        String sql = "SELECT dni, apellido, nombre, fechaDeNacimiento, estado FROM alumno WHERE dni = ?  AND estado = 1";
         Alumno obtenerAlumno = null;
         
         try {
@@ -189,7 +189,7 @@ public class AlumnoData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al listar los alumnos.");
         }
-        System.out.println(listaAlumno);
+        
         return listaAlumno;
     }
     
