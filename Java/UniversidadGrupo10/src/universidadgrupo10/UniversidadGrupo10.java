@@ -7,6 +7,7 @@ import Dominio.Alumno;
 import Dominio.Materia;
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -95,6 +96,29 @@ public class UniversidadGrupo10 {
         //Materia materia = new Materia(5, "EDA", 2, true);
         //obtenerMateria.modificarMateria(materia);
         
+        
+        
+        //                  Probando Metodo Eliminar Materia
+        
+        //obtenerMateria.eliminarMateria(3);
+        
+        
+        //                  Probando Metodo Listar Materias
+        /*
+        List<Materia> listaPrueba = new ArrayList<>();
+        
+        listaPrueba = obtenerMateria.listarMaterias();
+        System.out.println("--------------------------");
+        System.out.println("Listado de materias");
+        for(Materia materia : listaPrueba){
+            
+            System.out.println("-------------------------");
+            System.out.println("Materia");
+            System.out.println("ID: " + materia.getIdMateria());
+            System.out.println("Nombre: " + materia.getNombre());
+            System.out.println("Anio: " + materia.getAnio());
+        }
+        */
         
     } 
     

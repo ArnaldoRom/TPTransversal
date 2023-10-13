@@ -3,7 +3,9 @@ package AccesoADatos;
 
 import Dominio.Materia;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -104,7 +106,54 @@ public class MateriaData {
         
     }
     
+    public void eliminarMateria(int id){
+        String sql = "UPDATE materia SET estado = false WHERE idMateria = ?";
+        
+        try {
+         
+            
+            PreparedStatement eliminar = conex.prepareStatement(sql);
+            eliminar.setInt(1, id);
+            eliminar.executeUpdate();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error de conexion");
+        }
+        
+        
+        
+    }
     
+    public List<Materia> listarMaterias(){
+    
+        String sql = "SELECT * FROM materia WHERE estado = 1";
+        
+       
+        List<Materia> listado;
+        listado = new ArrayList<>();
+        
+        try {
+            
+            PreparedStatement listar = conex.prepareStatement(sql);
+            
+            ResultSet list = listar.executeQuery();
+            
+            while(list.next()){
+                Materia materia = new Materia();
+                materia.setIdMateria(list.getInt("idMateria"));
+                materia.setNombre(list.getString("nombre"));
+                materia.setAnio(list.getInt("anio"));
+                listado.add(materia);
+ 
+            }
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conecectar con la tabla Materia");
+        }
+        
+        
+        return listado;
+    }
     
     
 }
