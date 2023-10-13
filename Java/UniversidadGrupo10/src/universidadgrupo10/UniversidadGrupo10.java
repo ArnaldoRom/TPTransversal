@@ -2,7 +2,9 @@
 package universidadgrupo10;
 
 import AccesoADatos.AlumnoData;
+import AccesoADatos.MateriaData;
 import Dominio.Alumno;
+import Dominio.Materia;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -62,6 +64,38 @@ public class UniversidadGrupo10 {
         
         }
         */
+        
+        
+        //                                      ENTREGA 2
+       MateriaData obtenerMateria = new MateriaData();
+        /*
+       
+        //                          Probando metodo GUARDAR MATERIA
+        
+        Materia materia = new Materia("Estructuras De Datos y Algoritmos",2, true);
+        MateriaData obtenerMateria = new MateriaData();
+        
+        obtenerMateria.guardarMateria(materia);
+        
+        */
+        
+        
+        //                          Probando metodo BUSCAR MATERIA
+        /*
+        Materia mat = obtenerMateria.buscarMateria(5);
+        System.out.println("Materia");
+        System.out.println("ID: "+ mat.getIdMateria());
+        System.out.println("Nombre: "+ mat.getNombre());
+        System.out.println("Año: "+ mat.getAnio());
+        */
+        
+        
+        //                   Probando metodo Modificar Materia
+        
+        //Materia materia = new Materia(5, "EDA", 2, true);
+        //obtenerMateria.modificarMateria(materia);
+        
+        
     } 
     
 }
