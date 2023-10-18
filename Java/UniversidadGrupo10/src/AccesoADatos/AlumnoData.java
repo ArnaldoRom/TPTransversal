@@ -43,38 +43,31 @@ public class AlumnoData {
     }
     
     
-    public Alumno buscarAlumnoPorDni(int dni){
+   public Alumno buscarAlumnoPorID(int idAlumno) {
+    String sql = "SELECT dni, apellido, nombre, fechaDeNacimiento, estado FROM alumno WHERE idAlumno = ? AND estado = 1";
+    Alumno obtenerAlumno = null;
     
-        String sql = "SELECT dni, apellido, nombre, fechaDeNacimiento, estado FROM alumno WHERE dni = ?  AND estado = 1";
-        Alumno obtenerAlumno = null;
+    try {
+        PreparedStatement buscar = conex.prepareStatement(sql);
+        buscar.setInt(1, idAlumno);
         
-        try {
-            
-            PreparedStatement buscar = conex.prepareStatement(sql);
-            buscar.setInt(1, dni);
-            
-            ResultSet lista = buscar.executeQuery();
-            
-            while(lista.next()){
-            
-                String apellido = lista.getString("apellido");
-                String nombre = lista.getString("nombre");
-                LocalDate fecha = lista.getDate("fechaDeNacimiento").toLocalDate();
-                boolean estado = lista.getBoolean("estado");
-                
-                obtenerAlumno = new Alumno (dni, apellido, nombre, fecha, estado);
-            
-            } 
-            
-         
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al buscar el alumno");
-        }
+        ResultSet lista = buscar.executeQuery();
         
-        
-        return obtenerAlumno;
-        
+        while (lista.next()) {
+            int dni = lista.getInt("dni");
+            String apellido = lista.getString("apellido");
+            String nombre = lista.getString("nombre");
+            LocalDate fecha = lista.getDate("fechaDeNacimiento").toLocalDate();
+            boolean estado = lista.getBoolean("estado");
+            
+            obtenerAlumno = new Alumno(idAlumno, dni, apellido, nombre, fecha, estado);
+        } 
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al buscar el alumno");
     }
+    
+    return obtenerAlumno;
+}
     
    
     public void actualizarDatosAlumno(Alumno alumno){

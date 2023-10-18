@@ -2,8 +2,10 @@
 package universidadgrupo10;
 
 import AccesoADatos.AlumnoData;
+import AccesoADatos.InscripcionData;
 import AccesoADatos.MateriaData;
 import Dominio.Alumno;
+import Dominio.Inscripcion;
 import Dominio.Materia;
 import java.sql.*;
 import java.time.LocalDate;
@@ -120,6 +122,42 @@ public class UniversidadGrupo10 {
         }
         */
         
+        
+        //         ENTREGA DOS / InscripcionData
+        
+        
+        
+        //              Probvando el metodo guardarAlumno
+        /*
+        InscripcionData obtenerInscripcion = new InscripcionData();
+        
+        AlumnoData alumno1 = new AlumnoData();
+        MateriaData materia1 = new MateriaData();
+        
+        
+        
+        Alumno quevedo = alumno1.buscarAlumnoPorID(9);
+        Materia ingles = materia1.buscarMateria(2);
+        Inscripcion insc = new Inscripcion(9, quevedo, ingles);
+        
+        obtenerInscripcion.guardarInscripcion(insc);
+        */
+        
+        
+        
+        //          Probando metodo ListarInscripciones
+        /*
+        List<Inscripcion> inscripciones = obtenerInscripcion.obtenerInscripciones();
+        
+        for (Inscripcion inscripcion : inscripciones) {
+            System.out.println("Materia");
+            System.out.println("ID Alumno: " + inscripcion.getIdAlumno());
+            System.out.println("ID Materia: " + inscripcion.getIdMateria());
+            System.out.println("NOTA: " + inscripcion.getNota());
+            System.out.println("ID Inscripto: " + inscripcion.getIdInscripto());
+        
+        }
+        */
     } 
     
 }
