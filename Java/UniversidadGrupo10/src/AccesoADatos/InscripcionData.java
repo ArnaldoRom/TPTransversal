@@ -87,7 +87,7 @@ public class InscripcionData {
         return listaObtenida;
     }
     
-    //me falta probar este metodo
+    //Problemas a motrar este metodo we
     public List<Inscripcion> obtenerInscripcionesPorAlumno(int idAlumno) {
     String sql = "SELECT * FROM inscripcion WHERE idAlumno = ? ";
     List<Inscripcion> inscripcionPorAlumno = new ArrayList<>();
