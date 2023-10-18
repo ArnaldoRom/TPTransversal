@@ -181,7 +181,7 @@ public class UniversidadGrupo10 {
 
         */
         
-       //            -----------------problemaaaaaaaaaaaaaaaaaas-------------------------------
+       //            
        
        List<Inscripcion> inscripcionesXAlumnos = obtenerInscripcion.obtenerInscripcionesPorAlumno(9);
         
