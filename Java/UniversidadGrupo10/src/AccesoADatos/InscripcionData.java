@@ -87,7 +87,7 @@ public class InscripcionData {
         return listaObtenida;
     }
     
-    //Problemas a motrar este metodo we
+    
     public List<Inscripcion> obtenerInscripcionesPorAlumno(int idAlumno) {
     String sql = "SELECT * FROM inscripcion WHERE idAlumno = ? ";
     List<Inscripcion> inscripcionPorAlumno = new ArrayList<>();
@@ -103,6 +103,10 @@ public class InscripcionData {
             newIns.setIdInscripto(rs.getInt("idInscripto"));
             newIns.setNota(rs.getDouble("nota"));
             
+            int idAlumnoo = rs.getInt("idAlumno");
+            Alumno alumno = alumnoD.buscarAlumnoPorID(idAlumnoo);
+            newIns.setIdAlumno(alumno);
+           
             
             int idMateria = rs.getInt("idMateria");
             Materia materia = materiaD.buscarMateria(idMateria);

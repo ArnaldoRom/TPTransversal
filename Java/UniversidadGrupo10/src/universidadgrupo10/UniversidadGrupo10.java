@@ -139,7 +139,7 @@ public class UniversidadGrupo10 {
         
         
         Alumno quevedo = alumno1.buscarAlumnoPorID(9);
-        Materia ingles = materia1.buscarMateria(2);
+        Materia ingles = materia1.buscarMateria(4);
         Inscripcion insc = new Inscripcion(9, quevedo, ingles);
         
         obtenerInscripcion.guardarInscripcion(insc);
@@ -181,15 +181,18 @@ public class UniversidadGrupo10 {
 
         */
         
-        List<Inscripcion> inscripcionesXAlumnos = obtenerInscripcion.obtenerInscripcionesPorAlumno(1);
+       //            -----------------problemaaaaaaaaaaaaaaaaaas-------------------------------
+       
+       List<Inscripcion> inscripcionesXAlumnos = obtenerInscripcion.obtenerInscripcionesPorAlumno(9);
         
         for(Inscripcion inscri : inscripcionesXAlumnos){
             System.out.println("----------------------------");
-            System.out.println("ID Inscripto" + inscri.getIdInscripto());
+            System.out.println("ID Inscripto: " + inscri.getIdInscripto());
             System.out.println("ID Aumno: " + inscri.getIdAlumno());
             System.out.println("ID Materia" + inscri.getIdMateria());
             System.out.println("Nota: " + inscri.getNota());
         }
+        
     } 
     
 }
