@@ -53,7 +53,8 @@ public class InscripcionData {
     public List<Inscripcion> obtenerInscripciones(){
     String sql = "SELECT * FROM inscripcion";
     List<Inscripcion> listaObtenida = new ArrayList<>();
-        
+       
+    
     try {
             
             PreparedStatement list = conex.prepareStatement(sql);
@@ -85,4 +86,39 @@ public class InscripcionData {
     
         return listaObtenida;
     }
+    
+    public void eliminarInscripcionMateriAlumno(int idAlumno, int idMateria) {
+    String sql = "UPDATE inscripcion SET estado = 0 WHERE idAlumno = ? AND idMateria = ?";
+    
+    try {
+        PreparedStatement actualizar = conex.prepareStatement(sql);
+        actualizar.setInt(1, idAlumno);
+        actualizar.setInt(2, idMateria);
+        
+        int verificar = actualizar.executeUpdate();
+        
+        if (verificar > 0) {
+            System.out.println("Inscripcion eliminada. ");
+        } else {
+            System.out.println("No se encontro ninguna inscripcion activa.");
+        }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al conectar con la tabla insripcion.");
+    }
+}
+    
+    
+    public void actualizarNota(int idAlumno, int idMateria, double nota){
+    String sql = "UPDATE inscripcion SET nota = ? WHERE idAlumno = ? AND idMateria = ?";
+    
+        try {
+            
+            PreparedStatement actualizar = conex.prepareStatement(sql);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(InscripcionData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    }
+    
 }
