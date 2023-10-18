@@ -127,10 +127,12 @@ public class UniversidadGrupo10 {
         
         
         
-        //              Probvando el metodo guardarAlumno
-        /*
-        InscripcionData obtenerInscripcion = new InscripcionData();
         
+        //              Probvando el metodo guardarAlumno
+        
+        
+        InscripcionData obtenerInscripcion = new InscripcionData();
+        /*
         AlumnoData alumno1 = new AlumnoData();
         MateriaData materia1 = new MateriaData();
         
@@ -145,7 +147,9 @@ public class UniversidadGrupo10 {
         
         
         
+        
         //          Probando metodo ListarInscripciones
+        
         /*
         List<Inscripcion> inscripciones = obtenerInscripcion.obtenerInscripciones();
         
@@ -158,6 +162,34 @@ public class UniversidadGrupo10 {
         
         }
         */
+        
+        
+        
+        //              Probando metodo obtenerAlumnosXMateria
+        /*
+        List<Alumno> alumnosXMateria = obtenerInscripcion.obtenerAlumnosXMateria(2);
+
+        for (Alumno alumno : alumnosXMateria) {
+            System.out.println("-----------------------------------------");
+            System.out.println("Alumno: ");
+            System.out.println("ID: " + alumno.getIdAlumno());
+            System.out.println("Nombre  " + alumno.getNombre());
+            System.out.println("Apellido  " + alumno.getApellido());
+            System.out.println("DNI: " + alumno.getDni());
+            System.out.println("FechaNacimiento: " + alumno.getFechaDeNacimiento());
+        }
+
+        */
+        
+        List<Inscripcion> inscripcionesXAlumnos = obtenerInscripcion.obtenerInscripcionesPorAlumno(1);
+        
+        for(Inscripcion inscri : inscripcionesXAlumnos){
+            System.out.println("----------------------------");
+            System.out.println("ID Inscripto" + inscri.getIdInscripto());
+            System.out.println("ID Aumno: " + inscri.getIdAlumno());
+            System.out.println("ID Materia" + inscri.getIdMateria());
+            System.out.println("Nota: " + inscri.getNota());
+        }
     } 
     
 }

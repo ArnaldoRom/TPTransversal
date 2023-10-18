@@ -87,6 +87,39 @@ public class InscripcionData {
         return listaObtenida;
     }
     
+    //me falta probar este metodo
+    public List<Inscripcion> obtenerInscripcionesPorAlumno(int idAlumno) {
+    String sql = "SELECT * FROM inscripcion WHERE idAlumno = ? ";
+    List<Inscripcion> inscripcionPorAlumno = new ArrayList<>();
+    
+    try {
+        PreparedStatement obt = conex.prepareStatement(sql);
+        obt.setInt(1, idAlumno);
+        
+        ResultSet rs = obt.executeQuery();
+        
+        while (rs.next()) {
+            Inscripcion newIns = new Inscripcion();
+            newIns.setIdInscripto(rs.getInt("idInscripto"));
+            newIns.setNota(rs.getDouble("nota"));
+            
+            
+            int idMateria = rs.getInt("idMateria");
+            Materia materia = materiaD.buscarMateria(idMateria);
+            newIns.setIdMateria(materia);
+            
+            
+            inscripcionPorAlumno.add(newIns);
+        }
+        
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al conectar con Inscripcion.");
+    }
+    
+    return inscripcionPorAlumno;
+}
+
+    
     public void eliminarInscripcionMateriAlumno(int idAlumno, int idMateria) {
     String sql = "UPDATE inscripcion SET estado = 0 WHERE idAlumno = ? AND idMateria = ?";
     
@@ -115,10 +148,37 @@ public class InscripcionData {
             
             PreparedStatement actualizar = conex.prepareStatement(sql);
             
+            
         } catch (SQLException ex) {
             Logger.getLogger(InscripcionData.class.getName()).log(Level.SEVERE, null, ex);
         }
     
     }
+    
+    
+    public List<Alumno> obtenerAlumnosXMateria(int idMateria) {
+    String sql = "SELECT idAlumno FROM inscripcion WHERE idMateria = ?";
+    List<Alumno> alumnosXMateria = new ArrayList<>();
+    
+    try {
+        PreparedStatement obt = conex.prepareStatement(sql);
+        obt.setInt(1, idMateria);
+        ResultSet rs = obt.executeQuery();
+        
+        while (rs.next()) {
+            int idAlumno = rs.getInt("idAlumno");
+           
+            Alumno alumno = alumnoD.buscarAlumnoPorID(idAlumno); 
+            if (alumno != null) {
+                alumnosXMateria.add(alumno);
+            }
+        }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al conectar aacon inscripcion");
+    }
+    
+    return alumnosXMateria;
+}
+    
     
 }
