@@ -25,7 +25,7 @@ public class AlumnoData {
         
         try {
             
-            PreparedStatement carga = conex.prepareStatement(sql);
+            PreparedStatement carga = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             
             carga.setInt(1,alumno.getDni());
             carga.setString(2, alumno.getApellido());
@@ -34,6 +34,15 @@ public class AlumnoData {
             carga.setBoolean(5, alumno.isEstado());
             
             carga.executeUpdate();
+            
+            ResultSet rs = carga.getGeneratedKeys();
+            
+            if(rs.next()){
+                alumno.setIdAlumno(rs.getInt("idAlumno"));
+                JOptionPane.showMessageDialog(null, "Alumno añadido con exito!");
+            }
+            
+            carga.close();
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al cargar alumno");

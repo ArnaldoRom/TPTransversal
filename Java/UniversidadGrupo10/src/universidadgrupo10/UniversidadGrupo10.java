@@ -71,26 +71,25 @@ public class UniversidadGrupo10 {
         
         //                                      ENTREGA 2
        MateriaData obtenerMateria = new MateriaData();
-        /*
+        
        
         //                          Probando metodo GUARDAR MATERIA
         
-        Materia materia = new Materia("Estructuras De Datos y Algoritmos",2, true);
-        MateriaData obtenerMateria = new MateriaData();
-        
+        /*
+        Materia materia = new Materia("Robotica",3, true);
         obtenerMateria.guardarMateria(materia);
-        
         */
+        
         
         
         //                          Probando metodo BUSCAR MATERIA
         /*
-        Materia mat = obtenerMateria.buscarMateria(5);
+        Materia mat = obtenerMateria.buscarMateria(12);
         System.out.println("Materia");
         System.out.println("ID: "+ mat.getIdMateria());
         System.out.println("Nombre: "+ mat.getNombre());
         System.out.println("Año: "+ mat.getAnio());
-        */
+       */
         
         
         //                   Probando metodo Modificar Materia
@@ -128,19 +127,22 @@ public class UniversidadGrupo10 {
         
         
         
-        //              Probvando el metodo guardarAlumno
+       
         
         
         InscripcionData obtenerInscripcion = new InscripcionData();
+        
+        
+         //              Probando el metodo guardarAlumno
         /*
         AlumnoData alumno1 = new AlumnoData();
         MateriaData materia1 = new MateriaData();
         
         
         
-        Alumno quevedo = alumno1.buscarAlumnoPorID(9);
-        Materia ingles = materia1.buscarMateria(4);
-        Inscripcion insc = new Inscripcion(9, quevedo, ingles);
+        Alumno alumn = alumno1.buscarAlumnoPorID(11);
+        Materia materia = materia1.buscarMateria(12);
+        Inscripcion insc = new Inscripcion(7, alumn, materia);
         
         obtenerInscripcion.guardarInscripcion(insc);
         */
@@ -150,7 +152,7 @@ public class UniversidadGrupo10 {
         
         //          Probando metodo ListarInscripciones
         
-        /*
+       
         List<Inscripcion> inscripciones = obtenerInscripcion.obtenerInscripciones();
         
         for (Inscripcion inscripcion : inscripciones) {
@@ -161,7 +163,7 @@ public class UniversidadGrupo10 {
             System.out.println("ID Inscripto: " + inscripcion.getIdInscripto());
         
         }
-        */
+       
         
         
         
@@ -182,7 +184,7 @@ public class UniversidadGrupo10 {
         */
         
        //            
-       
+       /*
        List<Inscripcion> inscripcionesXAlumnos = obtenerInscripcion.obtenerInscripcionesPorAlumno(9);
         
         for(Inscripcion inscri : inscripcionesXAlumnos){
@@ -192,7 +194,7 @@ public class UniversidadGrupo10 {
             System.out.println("ID Materia" + inscri.getIdMateria());
             System.out.println("Nota: " + inscri.getNota());
         }
-        
+        */
     } 
     
 }

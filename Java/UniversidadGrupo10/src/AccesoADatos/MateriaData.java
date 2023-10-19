@@ -29,12 +29,22 @@ public class MateriaData {
         try {
             
             
-            PreparedStatement guardar = conex.prepareStatement(sql);
+            PreparedStatement guardar = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);//Investicar Return Generated Keys
             guardar.setString(1,materia.getNombre());
             guardar.setInt(2, materia.getAnio());
             guardar.setBoolean(3, true);
             
             guardar.executeUpdate();
+            
+           
+             ResultSet rs = guardar.getGeneratedKeys();
+            
+            if(rs.next()){
+                materia.setIdMateria(rs.getInt("idMateria"));
+            
+            }
+            
+            guardar.close();
             
         } catch (SQLException ex) {
             JOptionPane.showConfirmDialog(null, "Error al guardar la Materia");

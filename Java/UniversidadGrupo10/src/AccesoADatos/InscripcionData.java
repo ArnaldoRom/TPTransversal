@@ -31,7 +31,7 @@ public class InscripcionData {
         
         try {
             
-            PreparedStatement guardar = conex.prepareStatement(sql);
+            PreparedStatement guardar = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             
             guardar.setDouble(1,inscrip.getNota());
             guardar.setInt(2, inscrip.getIdAlumno().getIdAlumno());
@@ -39,7 +39,13 @@ public class InscripcionData {
             
             
             guardar.executeUpdate();
+            ResultSet rs = guardar.getGeneratedKeys();
             
+            if(rs.next()){
+                inscrip.setIdInscripto(rs.getInt("idInscripto"));
+            }
+            
+            guardar.close();
             
         } catch (SQLException ex) {
             
@@ -50,8 +56,11 @@ public class InscripcionData {
     
     }
     
+    
+    
+    
     public List<Inscripcion> obtenerInscripciones(){
-    String sql = "SELECT * FROM inscripcion";
+    String sql = "SELECT * FROM inscripcion JOIN materia  ON (inscripcion.idMateria = materia.idMateria) JOIN alumno ON (inscripcion.idAlumno = alumno.idAlumno) WHERE materia.estado > 0 AND alumno.estado > 0";
     List<Inscripcion> listaObtenida = new ArrayList<>();
        
     
