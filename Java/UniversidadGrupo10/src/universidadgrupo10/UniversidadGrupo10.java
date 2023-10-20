@@ -31,9 +31,9 @@ public class UniversidadGrupo10 {
             
         
         //Probando el buscador de alumno por id
-        /* 
-        Alumno alumnos =objetoAlumno.buscarAlumnoPorDni(40590255);
-         System.out.println("-----------------------");
+        
+        /*
+        Alumno alumnos =objetoAlumno.buscarAlumnoPorID(11);
          System.out.println("Alumno");
          System.out.println("Nombre:" + alumnos.getNombre());
          System.out.println("Apellido: " + alumnos.getApellido());
@@ -152,7 +152,7 @@ public class UniversidadGrupo10 {
         
         //          Probando metodo ListarInscripciones
         
-       
+       /*
         List<Inscripcion> inscripciones = obtenerInscripcion.obtenerInscripciones();
         
         for (Inscripcion inscripcion : inscripciones) {
@@ -163,7 +163,7 @@ public class UniversidadGrupo10 {
             System.out.println("ID Inscripto: " + inscripcion.getIdInscripto());
         
         }
-       
+       */
         
         
         

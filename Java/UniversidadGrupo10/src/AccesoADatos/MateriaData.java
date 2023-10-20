@@ -53,8 +53,7 @@ public class MateriaData {
         
     }
     
-    
-    
+
     public Materia buscarMateria(int id){
         
         String sql = "SELECT * FROM materia WHERE idMateria = ? AND estado = 1";
@@ -90,9 +89,7 @@ public class MateriaData {
         return mat;
         
     }
-    
-    
-    
+
     
     public void modificarMateria(Materia materia){
     

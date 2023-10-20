@@ -78,6 +78,31 @@ public class AlumnoData {
     return obtenerAlumno;
 }
     
+   public Alumno buscarAlumnoPorDNI(int dni) {
+    String sql = "SELECT dni, apellido, nombre, fechaDeNacimiento, estado FROM alumno WHERE dni = ? AND estado = 1";
+    Alumno obtenerAlumno = null;
+    
+    try {
+        PreparedStatement buscar = conex.prepareStatement(sql);
+        buscar.setInt(1, dni);
+        
+        ResultSet lista = buscar.executeQuery();
+        
+        while (lista.next()) {
+            int dnii = lista.getInt("dni");
+            String apellido = lista.getString("apellido");
+            String nombre = lista.getString("nombre");
+            LocalDate fecha = lista.getDate("fechaDeNacimiento").toLocalDate();
+            boolean estado = lista.getBoolean("estado");
+            
+            obtenerAlumno = new Alumno( dnii, apellido, nombre, fecha, estado);
+        } 
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al buscar el alumno");
+    }
+    
+    return obtenerAlumno;
+}
    
     public void actualizarDatosAlumno(Alumno alumno){
     
