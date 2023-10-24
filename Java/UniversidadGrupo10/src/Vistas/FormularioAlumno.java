@@ -73,8 +73,18 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         });
 
         jbNuevo.setText("Nuevo");
+        jbNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbNuevoActionPerformed(evt);
+            }
+        });
 
         jbEliminar.setText("Eliminar");
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarActionPerformed(evt);
+            }
+        });
 
         jbGuardar.setText("Guardar");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -84,6 +94,11 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         });
 
         jbSalir.setText("Salir");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -174,18 +189,27 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
        String nombre = jtNombre.getText();
        String apellido  = jtApellido.getText();
        int dni = Integer.parseInt(jtDocumento.getText());
-       Date fecha = Date.valueOf(jCalendario.getDateFormatString());
+       java.util.Date fecha = jCalendario.getDate();
        LocalDate fN = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
        Boolean estado = jcbEstado.isSelected();
        
        if(nombre.isEmpty() || apellido.isEmpty()){
            JOptionPane.showMessageDialog(this, "Campos incompletos.", "Error", HEIGHT);
            return;
-       }    
+       } 
+       
+       if(alumno==null){
+            alumno = new Alumno(dni, apellido, nombre, fN, estado);
+            alumnoData.guardarAlumno(alumno);
+       }else{
+           alumno.setDni(dni);
+           alumno.setApellido(apellido);
+           alumno.setNombre(nombre);
+           alumno.setFechaDeNacimiento(fN);
+           alumnoData.actualizarDatosAlumno(alumno);
+       }
        
        
-        alumno = new Alumno(dni, apellido, nombre, fN, estado);
-        alumnoData.guardarAlumno(alumno);
        }catch(NumberFormatException ex){
            
            JOptionPane.showMessageDialog(this, "Ingrese un DNI valido", "Error", HEIGHT);
@@ -196,7 +220,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         // TODO add your handling code here:
          try{
-            Integer dni=Integer.parseInt(jtDocumento.getText());
+            int dni=Integer.parseInt(jtDocumento.getText());
             alumno=alumnoData.buscarAlumnoPorDNI(dni);
             if(alumno!=null){
                 jtApellido.setText(alumno.getApellido());
@@ -213,11 +237,33 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jbBuscarActionPerformed
 
+    private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
+        // TODO add your handling code here:
+        limpiar();
+        alumno=null;
+    }//GEN-LAST:event_jbNuevoActionPerformed
+
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
+        // TODO add your handling code here:
+        if(alumno!=null){
+            alumnoData.desabilitarEstado(alumno.getIdAlumno());
+            alumno=null;
+            limpiar();
+        }else{
+           JOptionPane.showMessageDialog(null,"Seleccione un Alumno"); 
+        }
+    }//GEN-LAST:event_jbEliminarActionPerformed
+
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jbSalirActionPerformed
+
      private void limpiar(){
         jtDocumento.setText("");
         jtApellido.setText("");
         jtNombre.setText("");
-        jcbEstado.setSelected(true);
+        jcbEstado.setSelected(false);
         jCalendario.setDate(null);     
     }
 

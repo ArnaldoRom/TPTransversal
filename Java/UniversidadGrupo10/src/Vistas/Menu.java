@@ -4,6 +4,10 @@
  */
 package Vistas;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author ejarq
@@ -26,7 +30,13 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jdEscritorio = new javax.swing.JDesktopPane();
+        ImageIcon icono=new ImageIcon(getClass().getResource("../Recursos/logo_ULP.jpg"));
+        Image miImagen=icono.getImage();
+        jdEscritorio = new javax.swing.JDesktopPane(){
+            public void paintComponent(Graphics g){
+                g.drawImage(miImagen,0,0,getWidth(),getHeight(),this);
+            }
+        };
         jMenu = new javax.swing.JMenuBar();
         jmAlumno = new javax.swing.JMenu();
         jmiFormulario = new javax.swing.JMenuItem();
