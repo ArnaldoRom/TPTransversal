@@ -122,7 +122,10 @@ public class AlumnoData {
         try {            
             PreparedStatement modificar = conex.prepareStatement(sql);
             modificar.setInt(1, id);            
-            modificar.executeUpdate();            
+            int desabilitar=modificar.executeUpdate();
+            if(desabilitar==1){
+                JOptionPane.showMessageDialog(null,"Alumno Eliminado");
+            }            
             
         } catch (SQLException ex) {
            JOptionPane.showMessageDialog(null, "Error al modificar estado");
