@@ -59,6 +59,11 @@ public class Menu extends javax.swing.JFrame {
         });
 
         jmiFormulario.setText("Formulario");
+        jmiFormulario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiFormularioActionPerformed(evt);
+            }
+        });
         jmAlumno.add(jmiFormulario);
 
         jMenu.add(jmAlumno);
@@ -121,16 +126,12 @@ public class Menu extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAlumnoActionPerformed
         // TODO add your handling code here:
-        jdEscritorio.removeAll();
-        jdEscritorio.repaint();
-        FormularioAlumno forAlum=new FormularioAlumno();
-        forAlum.setVisible(true);
-        jdEscritorio.add(forAlum);       
-        jdEscritorio.moveToFront(forAlum);    
+      
     }//GEN-LAST:event_jmAlumnoActionPerformed
 
     private void jmiForMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiForMatActionPerformed
@@ -172,6 +173,16 @@ public class Menu extends javax.swing.JFrame {
         jdEscritorio.add(conXMat);
         jdEscritorio.moveToFront(conXMat);
     }//GEN-LAST:event_jmiAlumPorMatActionPerformed
+
+    private void jmiFormularioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiFormularioActionPerformed
+        // TODO add your handling code here:
+        jdEscritorio.removeAll();
+        jdEscritorio.repaint();
+        FormularioAlumno forAlum=new FormularioAlumno();
+        forAlum.setVisible(true);
+        jdEscritorio.add(forAlum);       
+        jdEscritorio.moveToFront(forAlum);   
+    }//GEN-LAST:event_jmiFormularioActionPerformed
 
     /**
      * @param args the command line arguments

@@ -1,17 +1,17 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package Vistas;
 
 /**
  *
- * @author ejarq
+ * @author pablo
  */
-public class Inscripciones extends javax.swing.JFrame {
+public class Inscripciones extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form Inscripciones
+     * Creates new form Inscripcion
      */
     public Inscripciones() {
         initComponents();
@@ -27,32 +27,30 @@ public class Inscripciones extends javax.swing.JFrame {
     private void initComponents() {
 
         jlTitulo = new javax.swing.JLabel();
-        jlSelecAlum = new javax.swing.JLabel();
-        jlLista = new javax.swing.JLabel();
+        jlSeleccion = new javax.swing.JLabel();
         jcbAlumnos = new javax.swing.JComboBox<>();
-        jcbMateriaNoIns = new javax.swing.JCheckBox();
+        jlTituloMateria = new javax.swing.JLabel();
         jcbMateriaIns = new javax.swing.JCheckBox();
+        jcbMateriaNoIns = new javax.swing.JCheckBox();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtLista = new javax.swing.JTable();
+        jtTabla = new javax.swing.JTable();
         jbInscribir = new javax.swing.JButton();
-        jbAnular = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jbAnular = new javax.swing.JButton();
 
         jlTitulo.setText("Inscripcion");
 
-        jlSelecAlum.setText("Seleccion de Alumno");
-
-        jlLista.setText("Listado de Materias");
+        jlSeleccion.setText("Seleccion de Alumno");
 
         jcbAlumnos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jcbMateriaNoIns.setText("Materias NO inscriptas");
+        jlTituloMateria.setText("Listado de Materias");
 
         jcbMateriaIns.setText("Materias Inscriptas");
 
-        jtLista.setModel(new javax.swing.table.DefaultTableModel(
+        jcbMateriaNoIns.setText("Materias NO Inscriptas");
+
+        jtTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -63,18 +61,13 @@ public class Inscripciones extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jtLista);
+        jScrollPane1.setViewportView(jtTabla);
 
         jbInscribir.setText("Inscribir");
-        jbInscribir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbInscribirActionPerformed(evt);
-            }
-        });
-
-        jbAnular.setText("Anular Inscripcion");
 
         jbSalir.setText("Salir");
+
+        jbAnular.setText("Anular Inscripcion");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,99 +76,64 @@ public class Inscripciones extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(183, 183, 183)
+                        .addGap(181, 181, 181)
                         .addComponent(jlTitulo))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(jlSelecAlum)
-                        .addGap(95, 95, 95)
-                        .addComponent(jcbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(152, 152, 152)
-                        .addComponent(jlLista))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jcbMateriaIns)
-                        .addGap(77, 77, 77)
-                        .addComponent(jcbMateriaNoIns))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
+                        .addGap(162, 162, 162)
+                        .addComponent(jlTituloMateria)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(jlSeleccion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jcbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jbInscribir)
+                                .addComponent(jcbMateriaIns)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jcbMateriaNoIns))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jbInscribir)
+                                .addGap(59, 59, 59)
                                 .addComponent(jbAnular)
-                                .addGap(70, 70, 70)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jbSalir))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(47, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addContainerGap()
                 .addComponent(jlTitulo)
-                .addGap(45, 45, 45)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlSelecAlum)
+                    .addComponent(jlSeleccion)
                     .addComponent(jcbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
-                .addComponent(jlLista)
-                .addGap(29, 29, 29)
+                .addGap(34, 34, 34)
+                .addComponent(jlTituloMateria)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jcbMateriaNoIns)
-                    .addComponent(jcbMateriaIns))
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(101, 101, 101)
+                    .addComponent(jcbMateriaIns)
+                    .addComponent(jcbMateriaNoIns))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbInscribir)
-                    .addComponent(jbAnular)
-                    .addComponent(jbSalir))
-                .addContainerGap(76, Short.MAX_VALUE))
+                    .addComponent(jbSalir)
+                    .addComponent(jbAnular))
+                .addGap(61, 61, 61))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscribirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbInscribirActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Inscripciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Inscripciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Inscripciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Inscripciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Inscripciones().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
@@ -185,9 +143,9 @@ public class Inscripciones extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jcbAlumnos;
     private javax.swing.JCheckBox jcbMateriaIns;
     private javax.swing.JCheckBox jcbMateriaNoIns;
-    private javax.swing.JLabel jlLista;
-    private javax.swing.JLabel jlSelecAlum;
+    private javax.swing.JLabel jlSeleccion;
     private javax.swing.JLabel jlTitulo;
-    private javax.swing.JTable jtLista;
+    private javax.swing.JLabel jlTituloMateria;
+    private javax.swing.JTable jtTabla;
     // End of variables declaration//GEN-END:variables
 }

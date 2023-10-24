@@ -1,29 +1,30 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package Vistas;
 
 import AccesoADatos.AlumnoData;
 import Dominio.Alumno;
 import java.sql.*;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author ejarq
+ * @author pablo
  */
-public class FormularioAlumno extends javax.swing.JFrame {
+public class FormularioAlumno extends javax.swing.JInternalFrame {
     private AlumnoData alumnoData = new AlumnoData();
-    private Alumno alumno = null;
-    
+    private Alumno alumno = null;    
+
+    /**
+     * Creates new form FormularioAlumn
+     */
     public FormularioAlumno() {
         initComponents();
-    }
-    public void mostrarPantalla(){
-        
     }
 
     /**
@@ -35,143 +36,147 @@ public class FormularioAlumno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jlTitulo = new javax.swing.JLabel();
+        jlDocumento = new javax.swing.JLabel();
+        jlApellido = new javax.swing.JLabel();
+        jlNombre = new javax.swing.JLabel();
+        jlEstado = new javax.swing.JLabel();
+        jlFecha = new javax.swing.JLabel();
         jtDocumento = new javax.swing.JTextField();
         jtApellido = new javax.swing.JTextField();
         jtNombre = new javax.swing.JTextField();
-        jcBestado = new javax.swing.JCheckBox();
-        jcalendario = new com.toedter.calendar.JDateChooser();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jcbEstado = new javax.swing.JCheckBox();
+        jCalendario = new com.toedter.calendar.JDateChooser();
+        jbBuscar = new javax.swing.JButton();
+        jbNuevo = new javax.swing.JButton();
+        jbEliminar = new javax.swing.JButton();
+        jbGuardar = new javax.swing.JButton();
+        jbSalir = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jlTitulo.setText("Alumno");
 
-        jLabel1.setText("Documento");
+        jlDocumento.setText("Documento");
 
-        jLabel2.setText("Apellido");
+        jlApellido.setText("Apellido");
 
-        jLabel3.setText("Alumno");
+        jlNombre.setText("Nombre");
 
-        jLabel4.setText("Nombre");
+        jlEstado.setText("Estado");
 
-        jLabel5.setText("Estado");
+        jlFecha.setText("Fecha de Nacimiento");
 
-        jLabel6.setText("Fecha de Nacimiento");
-
-        jButton1.setText("Buscar");
-
-        jButton2.setText("Nuevo");
-
-        jButton3.setText("Eliminar");
-
-        jButton4.setText("Guardar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jbBuscar.setText("Buscar");
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jbBuscarActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Salir");
+        jbNuevo.setText("Nuevo");
+
+        jbEliminar.setText("Eliminar");
+
+        jbGuardar.setText("Guardar");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
+
+        jbSalir.setText("Salir");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jbNuevo)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbEliminar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jlApellido)
+                            .addComponent(jlNombre)
+                            .addComponent(jlEstado)
+                            .addComponent(jlDocumento)
+                            .addComponent(jlFecha))
+                        .addGap(41, 41, 41)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jcbEstado)
+                    .addComponent(jCalendario, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(193, 193, 193)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                .addComponent(jtApellido)
+                                .addComponent(jtDocumento))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton4)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton5))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6))
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jcalendario, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jtDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButton1))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jcBestado))
-                                            .addGap(0, 0, Short.MAX_VALUE))))))))
-                .addContainerGap())
+                                .addComponent(jbGuardar)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jbSalir)
+                            .addComponent(jbBuscar))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(177, 177, 177)
+                .addComponent(jlTitulo)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel3)
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jtDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                .addComponent(jlTitulo)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addComponent(jcBestado))
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jcalendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(150, 150, 150)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlDocumento)
+                            .addComponent(jtDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbBuscar))
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlApellido)
+                            .addComponent(jtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlNombre)
+                            .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(jlEstado))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jcbEstado)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jCalendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlFecha))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
-                .addContainerGap(44, Short.MAX_VALUE))
+                    .addComponent(jbNuevo)
+                    .addComponent(jbEliminar)
+                    .addComponent(jbGuardar)
+                    .addComponent(jbSalir))
+                .addGap(38, 38, 38))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-       
-       
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        // TODO add your handling code here:
+         
        try{
        String nombre = jtNombre.getText();
        String apellido  = jtApellido.getText();
        int dni = Integer.parseInt(jtDocumento.getText());
-       Date fecha = Date.valueOf(jcalendario.getDateFormatString());
+       Date fecha = Date.valueOf(jCalendario.getDateFormatString());
        LocalDate fN = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-       Boolean estado = jcBestado.isSelected();
+       Boolean estado = jcbEstado.isSelected();
        
        if(nombre.isEmpty() || apellido.isEmpty()){
            JOptionPane.showMessageDialog(this, "Campos incompletos.", "Error", HEIGHT);
@@ -186,60 +191,50 @@ public class FormularioAlumno extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(this, "Ingrese un DNI valido", "Error", HEIGHT);
        
        }
-       
-       
-        
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jbGuardarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        // TODO add your handling code here:
+         try{
+            Integer dni=Integer.parseInt(jtDocumento.getText());
+            alumno=alumnoData.buscarAlumnoPorDNI(dni);
+            if(alumno!=null){
+                jtApellido.setText(alumno.getApellido());
+                jtNombre.setText(alumno.getNombre());
+                jcbEstado.setSelected(alumno.isEstado());
+                LocalDate fecha=alumno.getFechaDeNacimiento();
+                java.util.Date date=java.util.Date.from(fecha.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                jCalendario.setDate(date);               
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormularioAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormularioAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormularioAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormularioAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            
+        }catch(NumberFormatException nf){
+            JOptionPane.showMessageDialog(this,"Ingrese un numero valido");
+            
         }
-        //</editor-fold>
+    }//GEN-LAST:event_jbBuscarActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FormularioAlumno().setVisible(true);
-            }
-        });
+     private void limpiar(){
+        jtDocumento.setText("");
+        jtApellido.setText("");
+        jtNombre.setText("");
+        jcbEstado.setSelected(true);
+        jCalendario.setDate(null);     
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JCheckBox jcBestado;
-    private com.toedter.calendar.JDateChooser jcalendario;
+    private com.toedter.calendar.JDateChooser jCalendario;
+    private javax.swing.JButton jbBuscar;
+    private javax.swing.JButton jbEliminar;
+    private javax.swing.JButton jbGuardar;
+    private javax.swing.JButton jbNuevo;
+    private javax.swing.JButton jbSalir;
+    private javax.swing.JCheckBox jcbEstado;
+    private javax.swing.JLabel jlApellido;
+    private javax.swing.JLabel jlDocumento;
+    private javax.swing.JLabel jlEstado;
+    private javax.swing.JLabel jlFecha;
+    private javax.swing.JLabel jlNombre;
+    private javax.swing.JLabel jlTitulo;
     private javax.swing.JTextField jtApellido;
     private javax.swing.JTextField jtDocumento;
     private javax.swing.JTextField jtNombre;
