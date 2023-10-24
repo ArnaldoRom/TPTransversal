@@ -72,8 +72,18 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         });
 
         jbEliminar.setText("Eliminar");
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarActionPerformed(evt);
+            }
+        });
 
         jbSalir.setText("Salir");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
 
         jbGuardar.setText("Guardar");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -157,12 +167,11 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try{
             int codigo=Integer.parseInt(jtfCodigo.getText());
-//            int anio=Integer.parseInt(jtfAño.getText());
-//            String anio2=Integer.toString(anio);
+            String anio;
             materia=materiaData.buscarMateria(codigo);
             if(materia!=null){
                 jtfNombre.setText(materia.getNombre());
-//                jtfAño.setText(anio2);
+                jtfAnio.setText(anio=String.valueOf(materia.getAnio()));
                 jcbEstado.setSelected(materia.isEstado());               
             }else{
                 JOptionPane.showMessageDialog(null,"No se encontro Materia");
@@ -190,11 +199,38 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this,"Campos Incompletos");
                 return;
             }
+            if(materia==null){
+                materia=new Materia(codigo,nombre,anio,estado);
+                materiaData.guardarMateria(materia);
+            }else{
+                materia.setIdMateria(codigo);
+                materia.setNombre(nombre);
+                materia.setAnio(anio);
+                materia.setEstado(true);
+                materiaData.modificarMateria(materia);
+            }
             
         }catch(NumberFormatException nf){
             JOptionPane.showMessageDialog(null,"Ingrese numero valido");
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
+        // TODO add your handling code here:
+        if(materia!=null){
+            materiaData.eliminarMateria(materia.getIdMateria());
+            materia=null;
+            limpiar();
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Sleccione una Materia");
+        }
+    }//GEN-LAST:event_jbEliminarActionPerformed
+
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jbSalirActionPerformed
 
     private void limpiar(){
         jtfCodigo.setText("");
