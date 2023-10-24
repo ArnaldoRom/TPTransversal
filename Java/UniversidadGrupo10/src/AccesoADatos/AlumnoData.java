@@ -117,7 +117,7 @@ public class AlumnoData {
     }   
     
     public void desabilitarEstado(int id){    
-        String sql = "UPDATE alumno SET estado = 0 WHERE idAlumno = ?";       
+        String sql = "UPDATE alumno SET estado = 0 WHERE dni= ?";       
         
         try {            
             PreparedStatement modificar = conex.prepareStatement(sql);

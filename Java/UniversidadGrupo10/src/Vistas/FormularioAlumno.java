@@ -183,8 +183,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-        // TODO add your handling code here:
-         
+        // TODO add your handling code here:         
        try{
        String nombre = jtNombre.getText();
        String apellido  = jtApellido.getText();
@@ -207,13 +206,10 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
            alumno.setNombre(nombre);
            alumno.setFechaDeNacimiento(fN);
            alumnoData.actualizarDatosAlumno(alumno);
-       }
+       }       
        
-       
-       }catch(NumberFormatException ex){
-           
-           JOptionPane.showMessageDialog(this, "Ingrese un DNI valido", "Error", HEIGHT);
-       
+       }catch(NumberFormatException ex){           
+           JOptionPane.showMessageDialog(this, "Ingrese un DNI valido", "Error", HEIGHT);       
        }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
@@ -229,6 +225,8 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
                 LocalDate fecha=alumno.getFechaDeNacimiento();
                 java.util.Date date=java.util.Date.from(fecha.atStartOfDay(ZoneId.systemDefault()).toInstant());
                 jCalendario.setDate(date);               
+            }else{
+                JOptionPane.showMessageDialog(null,"No se encontro Alumno");
             }
             
         }catch(NumberFormatException nf){
@@ -244,9 +242,9 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:         
         if(alumno!=null){
-            alumnoData.desabilitarEstado(alumno.getIdAlumno());
+            alumnoData.desabilitarEstado(alumno.getDni());           
             alumno=null;
             limpiar();
         }else{

@@ -4,11 +4,17 @@
  */
 package Vistas;
 
+import AccesoADatos.MateriaData;
+import Dominio.Materia;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author pablo
  */
 public class FormularioMateria extends javax.swing.JInternalFrame {
+    private Materia materia=null;
+    private MateriaData materiaData= new MateriaData(); 
 
     /**
      * Creates new form FormularioMateri
@@ -33,7 +39,7 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         jlCodigo = new javax.swing.JLabel();
         jtfCodigo = new javax.swing.JTextField();
         jtfNombre = new javax.swing.JTextField();
-        jtfAño = new javax.swing.JTextField();
+        jtfAnio = new javax.swing.JTextField();
         jcbEstado = new javax.swing.JCheckBox();
         jbBuscar = new javax.swing.JButton();
         jbNuevo = new javax.swing.JButton();
@@ -52,14 +58,29 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         jlCodigo.setText("Codigo");
 
         jbBuscar.setText("Buscar");
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
 
         jbNuevo.setText("Nuevo");
+        jbNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbNuevoActionPerformed(evt);
+            }
+        });
 
         jbEliminar.setText("Eliminar");
 
         jbSalir.setText("Salir");
 
         jbGuardar.setText("Guardar");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,7 +105,7 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
                                 .addComponent(jtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(33, 33, 33)
                                 .addComponent(jbBuscar))
-                            .addComponent(jtfAño, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jcbEstado))))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
@@ -102,9 +123,9 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jlTitulo)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jlCodigo)
                             .addComponent(jtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -114,10 +135,8 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
                             .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jlNombre))
                         .addGap(18, 18, 18)
-                        .addComponent(jtfAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jlAño)))
+                        .addComponent(jtfAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlAño))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jlEstado)
@@ -134,6 +153,56 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        // TODO add your handling code here:
+        try{
+            int codigo=Integer.parseInt(jtfCodigo.getText());
+//            int anio=Integer.parseInt(jtfAño.getText());
+//            String anio2=Integer.toString(anio);
+            materia=materiaData.buscarMateria(codigo);
+            if(materia!=null){
+                jtfNombre.setText(materia.getNombre());
+//                jtfAño.setText(anio2);
+                jcbEstado.setSelected(materia.isEstado());               
+            }else{
+                JOptionPane.showMessageDialog(null,"No se encontro Materia");
+            }          
+            
+        }catch(NumberFormatException nf){
+            JOptionPane.showMessageDialog(this,"Ingrese un numero valido");           
+        }
+    }//GEN-LAST:event_jbBuscarActionPerformed
+
+    private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
+        // TODO add your handling code here:
+        limpiar();
+        materia=null;
+    }//GEN-LAST:event_jbNuevoActionPerformed
+
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        // TODO add your handling code here:
+        try{
+            int codigo=Integer.parseInt(jtfCodigo.getText());
+            String nombre=jtfNombre.getText();
+            int anio=Integer.parseInt(jtfAnio.getText());
+            Boolean estado=jcbEstado.isSelected();
+            if(nombre.isEmpty()){
+                JOptionPane.showMessageDialog(this,"Campos Incompletos");
+                return;
+            }
+            
+        }catch(NumberFormatException nf){
+            JOptionPane.showMessageDialog(null,"Ingrese numero valido");
+        }
+    }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void limpiar(){
+        jtfCodigo.setText("");
+        jtfNombre.setText("");
+        jtfAnio.setText("");
+        jcbEstado.setSelected(false);
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbBuscar;
@@ -147,7 +216,7 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlEstado;
     private javax.swing.JLabel jlNombre;
     private javax.swing.JLabel jlTitulo;
-    private javax.swing.JTextField jtfAño;
+    private javax.swing.JTextField jtfAnio;
     private javax.swing.JTextField jtfCodigo;
     private javax.swing.JTextField jtfNombre;
     // End of variables declaration//GEN-END:variables

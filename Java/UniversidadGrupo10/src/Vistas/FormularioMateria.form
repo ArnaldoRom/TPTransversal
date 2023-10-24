@@ -41,7 +41,7 @@
                               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                               <Component id="jbBuscar" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jtfAño" alignment="0" min="-2" pref="51" max="-2" attributes="0"/>
+                          <Component id="jtfAnio" alignment="0" min="-2" pref="51" max="-2" attributes="0"/>
                           <Component id="jcbEstado" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -65,9 +65,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jlTitulo" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jlCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jtfCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -79,12 +79,9 @@
                           <Component id="jlNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="jtfAño" min="-2" max="-2" attributes="0"/>
+                      <Component id="jtfAnio" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jlAño" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jlAño" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -133,7 +130,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jtfNombre">
     </Component>
-    <Component class="javax.swing.JTextField" name="jtfA&#xf1;o">
+    <Component class="javax.swing.JTextField" name="jtfAnio">
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcbEstado">
     </Component>
@@ -141,11 +138,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbBuscarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbNuevo">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nuevo"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbNuevoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbEliminar">
       <Properties>
@@ -161,6 +164,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Guardar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbGuardarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

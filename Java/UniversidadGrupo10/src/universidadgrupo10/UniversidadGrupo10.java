@@ -49,8 +49,8 @@ public class UniversidadGrupo10 {
 
         
         //modificadores de estado RECIBEN ID
-        //objetoAlumno.desabilitarEstado(1);
-        //objetoAlumno.habilitarEstado(1);
+        //objetoAlumno.desabilitarEstado(10);
+       //objetoAlumno.habilitarEstado(10);
         
         
         //Probando el listar Alumnos ACTIVOS.
