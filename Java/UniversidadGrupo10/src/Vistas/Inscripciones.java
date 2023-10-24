@@ -26,33 +26,33 @@ public class Inscripciones extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        jlTitulo = new javax.swing.JLabel();
+        jlSelecAlum = new javax.swing.JLabel();
+        jlLista = new javax.swing.JLabel();
+        jcbAlumnos = new javax.swing.JComboBox<>();
+        jcbMateriaNoIns = new javax.swing.JCheckBox();
+        jcbMateriaIns = new javax.swing.JCheckBox();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jtLista = new javax.swing.JTable();
+        jbInscribir = new javax.swing.JButton();
+        jbAnular = new javax.swing.JButton();
+        jbSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Inscripcion");
+        jlTitulo.setText("Inscripcion");
 
-        jLabel2.setText("Seleccion de Alumno");
+        jlSelecAlum.setText("Seleccion de Alumno");
 
-        jLabel3.setText("Listado de Materias");
+        jlLista.setText("Listado de Materias");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbAlumnos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jCheckBox1.setText("Materias NO inscriptas");
+        jcbMateriaNoIns.setText("Materias NO inscriptas");
 
-        jCheckBox2.setText("Materias Inscriptas");
+        jcbMateriaIns.setText("Materias Inscriptas");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtLista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -63,18 +63,18 @@ public class Inscripciones extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtLista);
 
-        jButton1.setText("Inscribir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbInscribir.setText("Inscribir");
+        jbInscribir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbInscribirActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Anular Inscripcion");
+        jbAnular.setText("Anular Inscripcion");
 
-        jButton3.setText("Salir");
+        jbSalir.setText("Salir");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,29 +84,29 @@ public class Inscripciones extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(183, 183, 183)
-                        .addComponent(jLabel1))
+                        .addComponent(jlTitulo))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(56, 56, 56)
-                        .addComponent(jLabel2)
+                        .addComponent(jlSelecAlum)
                         .addGap(95, 95, 95)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jcbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(152, 152, 152)
-                        .addComponent(jLabel3))
+                        .addComponent(jlLista))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addComponent(jCheckBox2)
+                        .addComponent(jcbMateriaIns)
                         .addGap(77, 77, 77)
-                        .addComponent(jCheckBox1))
+                        .addComponent(jcbMateriaNoIns))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(jbInscribir)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2)
+                                .addComponent(jbAnular)
                                 .addGap(70, 70, 70)
-                                .addComponent(jButton3))
+                                .addComponent(jbSalir))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
@@ -114,33 +114,33 @@ public class Inscripciones extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(48, 48, 48)
-                .addComponent(jLabel1)
+                .addComponent(jlTitulo)
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlSelecAlum)
+                    .addComponent(jcbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
-                .addComponent(jLabel3)
+                .addComponent(jlLista)
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jCheckBox2))
+                    .addComponent(jcbMateriaNoIns)
+                    .addComponent(jcbMateriaIns))
                 .addGap(32, 32, 32)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(101, 101, 101)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jbInscribir)
+                    .addComponent(jbAnular)
+                    .addComponent(jbSalir))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jbInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscribirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jbInscribirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,16 +178,16 @@ public class Inscripciones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton jbAnular;
+    private javax.swing.JButton jbInscribir;
+    private javax.swing.JButton jbSalir;
+    private javax.swing.JComboBox<String> jcbAlumnos;
+    private javax.swing.JCheckBox jcbMateriaIns;
+    private javax.swing.JCheckBox jcbMateriaNoIns;
+    private javax.swing.JLabel jlLista;
+    private javax.swing.JLabel jlSelecAlum;
+    private javax.swing.JLabel jlTitulo;
+    private javax.swing.JTable jtLista;
     // End of variables declaration//GEN-END:variables
 }
