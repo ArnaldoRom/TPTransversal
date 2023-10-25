@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.ToolTipManager;
 import javax.swing.UIManager;
 
 /**
@@ -21,6 +22,7 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
+        ToolTipManager.sharedInstance().setInitialDelay(0);
     }
 
     /**
@@ -32,7 +34,7 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ImageIcon icono=new ImageIcon(getClass().getResource("../Recursos/logo_ULP.jpg"));
+        ImageIcon icono=new ImageIcon(getClass().getResource("../Recursos/ULP.png"));
         Image miImagen=icono.getImage();
         jdEscritorio = new javax.swing.JDesktopPane(){
             public void paintComponent(Graphics g){
@@ -207,7 +209,8 @@ public class Menu extends javax.swing.JFrame {
          */
         
         UIManager.put("nimbusBase", new Color(44, 62, 80 ));
-        UIManager.put("nimbusBlueGrey", new Color(93, 109, 126));        
+        UIManager.put("nimbusBlueGrey", new Color(93, 109, 126));   
+        
 
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

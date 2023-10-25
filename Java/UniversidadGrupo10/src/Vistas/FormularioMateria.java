@@ -49,13 +49,13 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
 
         jlTitulo.setText("Materia");
 
-        jlNombre.setText("Nombre");
+        jlNombre.setText("Nombre:");
 
-        jlAño.setText("Año");
+        jlAño.setText("Año:");
 
-        jlEstado.setText("Estado");
+        jlEstado.setText("Estado:");
 
-        jlCodigo.setText("Codigo");
+        jlCodigo.setText("Codigo:");
 
         jbBuscar.setText("Buscar");
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {

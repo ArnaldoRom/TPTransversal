@@ -59,7 +59,7 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
 
         jlTitulo.setText("Carga de Notas");
 
-        jlSeleccion.setText("Seleccione un Alumno");
+        jlSeleccion.setText("Seleccione un Alumno:");
 
         jcbAlumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,10 +113,9 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
                                 .addComponent(jlSeleccion)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jcbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jcbAlumnos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jbGuardar)
@@ -147,9 +146,15 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         // TODO add your handling code here:
+        Alumno alumno=(Alumno)jcbAlumnos.getSelectedItem();       
         int seleccion=jtTabla.getSelectedRow();
         if(seleccion!=-1){
+            int idMateria=(Integer)modelo.getValueAt(seleccion, 0);
+            double nota=(Double)modelo.getValueAt(seleccion,2);
             
+            inscripcionData.actualizarNota(alumno.getIdAlumno(), idMateria, nota); 
+            borrarfila();
+            jbGuardar.setEnabled(false);
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
@@ -168,8 +173,7 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         borrarfila();
         Alumno seleccion=(Alumno)jcbAlumnos.getSelectedItem();
-        Materias=inscripcionData.materiasInscriptas(seleccion.getIdAlumno()); 
-        
+        Materias=inscripcionData.materiasInscriptas(seleccion.getIdAlumno());     
                
         for(Materia materia: Materias){
             double nota=0;
