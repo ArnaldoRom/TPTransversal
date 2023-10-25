@@ -4,9 +4,11 @@
  */
 package Vistas;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.UIManager;
 
 /**
  *
@@ -203,6 +205,10 @@ public class Menu extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        
+        UIManager.put("nimbusBase", new Color(44, 62, 80 ));
+        UIManager.put("nimbusBlueGrey", new Color(93, 109, 126));        
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {

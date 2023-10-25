@@ -147,10 +147,15 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         // TODO add your handling code here:
+        int seleccion=jtTabla.getSelectedRow();
+        if(seleccion!=-1){
+            
+        }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jtTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtTablaMouseClicked
         // TODO add your handling code here:
+        jbGuardar.setEnabled(true);
         
     }//GEN-LAST:event_jtTablaMouseClicked
 
