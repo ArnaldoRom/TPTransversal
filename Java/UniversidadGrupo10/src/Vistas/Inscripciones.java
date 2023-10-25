@@ -4,17 +4,42 @@
  */
 package Vistas;
 
+import AccesoADatos.AlumnoData;
+import AccesoADatos.InscripcionData;
+import AccesoADatos.MateriaData;
+import Dominio.Alumno;
+import Dominio.Materia;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author pablo
  */
 public class Inscripciones extends javax.swing.JInternalFrame {
+    private List<Alumno> Alumnos;
+    private List<Materia> Materias;
+    private AlumnoData alumnoData;
+    private MateriaData materiaData;
+    private InscripcionData inscripcionData;
+    private DefaultTableModel modelo;
+    
 
     /**
      * Creates new form Inscripcion
      */
     public Inscripciones() {
         initComponents();
+        alumnoData=new AlumnoData();
+        materiaData=new MateriaData();
+        inscripcionData=new InscripcionData();
+        Alumnos= alumnoData.listarAlumnos();
+        modelo=new DefaultTableModel();
+        listaAlumnos();
+        cabecera();
+        
+        
     }
 
     /**
@@ -42,8 +67,6 @@ public class Inscripciones extends javax.swing.JInternalFrame {
 
         jlSeleccion.setText("Seleccion de Alumno");
 
-        jcbAlumnos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jlTituloMateria.setText("Listado de Materias");
 
         jcbMateriaIns.setText("Materias Inscriptas");
@@ -64,10 +87,17 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jtTabla);
 
         jbInscribir.setText("Inscribir");
+        jbInscribir.setEnabled(false);
+        jbInscribir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbInscribirActionPerformed(evt);
+            }
+        });
 
         jbSalir.setText("Salir");
 
         jbAnular.setText("Anular Inscripcion");
+        jbAnular.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,7 +118,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                         .addGap(54, 54, 54)
                         .addComponent(jlSeleccion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jcbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jcbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(27, 27, 27)
@@ -134,13 +164,50 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscribirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbInscribirActionPerformed
+
+    private void listaAlumnos(){
+        for(Alumno lista:Alumnos){
+            jcbAlumnos.addItem(lista);
+        }
+    }
+    
+    private void cargaInscriptos(){
+        Alumno selecion=(Alumno)jcbAlumnos.getSelectedItem();
+        
+    }
+    
+    private void cargaNOInscriptos(){
+        Alumno selecion=(Alumno)jcbAlumnos.getSelectedItem();
+        
+    }
+    
+    private void cabecera(){
+        ArrayList<Object> titulos=new ArrayList<>();
+        titulos.add("ID");
+        titulos.add("Nombre");
+        titulos.add("Año");
+        for(Object filas:titulos){
+            modelo.addColumn(filas);
+        }
+        jtTabla.setModel(modelo);
+    }
+    
+    private void borrarFila(){
+        int indice= modelo.getRowCount()-1;
+        for(int i = indice;i>=0;i--){
+            modelo.removeRow(i);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbAnular;
     private javax.swing.JButton jbInscribir;
     private javax.swing.JButton jbSalir;
-    private javax.swing.JComboBox<String> jcbAlumnos;
+    private javax.swing.JComboBox<Alumno> jcbAlumnos;
     private javax.swing.JCheckBox jcbMateriaIns;
     private javax.swing.JCheckBox jcbMateriaNoIns;
     private javax.swing.JLabel jlSeleccion;
