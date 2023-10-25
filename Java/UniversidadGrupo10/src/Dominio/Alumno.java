@@ -89,14 +89,8 @@ public class Alumno {
               "Fecha De Nacimiento: " + fechaDeNacimiento + "\n" +
               "Estado: " + estado +"\n"
                +" " + "\n";
-              
 
-
-
-    }
-    
-    
-    
+    } 
     
 }
 

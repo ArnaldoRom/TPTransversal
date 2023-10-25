@@ -20,7 +20,8 @@ import javax.swing.table.DefaultTableModel;
 public class ActualizarNotas extends javax.swing.JInternalFrame {
     private List<Alumno> Alumnos;
     private List<Materia> Materias;
-    private Inscripcion Inscripcion;
+    private List<Inscripcion> Inscripciones;
+    private Inscripcion inscripcion;
     private AlumnoData alumnoData;
     private InscripcionData inscripcionData;
     private DefaultTableModel modelo;
@@ -33,7 +34,8 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
         modelo=new DefaultTableModel();
         alumnoData=new AlumnoData();
         inscripcionData=new InscripcionData();
-        Alumnos=alumnoData.listarAlumnos();
+        Alumnos=alumnoData.listarAlumnos(); 
+        Inscripciones=inscripcionData.obtenerInscripciones();
         listaAlumnos();
         cabecera();
     }
@@ -161,9 +163,17 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         borrarfila();
         Alumno seleccion=(Alumno)jcbAlumnos.getSelectedItem();
-        Materias=inscripcionData.materiasInscriptas(seleccion.getIdAlumno());
-        for(Materia materia:Materias){
-            modelo.addRow(new Object[]{materia.getIdMateria(), materia.getNombre(), });            
+        Materias=inscripcionData.materiasInscriptas(seleccion.getIdAlumno()); 
+        
+               
+        for(Materia materia: Materias){
+            double nota=0;
+            for(Inscripcion obtener:Inscripciones){
+                if(obtener.getIdAlumno().getIdAlumno()== seleccion.getIdAlumno() && obtener.getIdMateria().getIdMateria()== materia.getIdMateria()){
+                    nota=obtener.getNota();                    
+                }
+            }
+            modelo.addRow(new Object[]{materia.getIdMateria(), materia.getNombre(),nota });            
         }        
     }//GEN-LAST:event_jcbAlumnosActionPerformed
 
