@@ -38,6 +38,7 @@ public class InscripcionData {
             
             if(rs.next()){
                 inscrip.setIdInscripto(rs.getInt("idInscripto"));
+                JOptionPane.showMessageDialog(null,"Inscripcion exitosa");
             }            
             guardar.close();            
         } catch (SQLException ex) {            
@@ -46,7 +47,8 @@ public class InscripcionData {
     }  
     
     public List<Inscripcion> obtenerInscripciones(){
-        String sql = "SELECT * FROM inscripcion JOIN materia  ON (inscripcion.idMateria = materia.idMateria) JOIN alumno ON (inscripcion.idAlumno = alumno.idAlumno) WHERE materia.estado > 0 AND alumno.estado > 0";
+        String sql = "SELECT * FROM inscripcion JOIN materia  ON (inscripcion.idMateria = materia.idMateria)"
+                + " JOIN alumno ON (inscripcion.idAlumno = alumno.idAlumno) WHERE materia.estado > 0 AND alumno.estado > 0";
         List<Inscripcion> listaObtenida = new ArrayList<>();    
     
         try {            
@@ -164,8 +166,58 @@ public class InscripcionData {
             }
             obt.close();
         }catch(SQLException ex){
-        JOptionPane.showMessageDialog(null, "Error al conectar aacon inscripcion");
+        JOptionPane.showMessageDialog(null, "Error al conectar con tabla inscripcion");
         }        
         return alumnosXMateria;
     }  
+    
+    public List<Materia> materiasInscriptas(int idAlumno){
+        String sql="SELECT inscripcion.idMateria, nombre, anio FROM inscripcion, materia "
+                + "WHERE inscripcion.idMateria=materia.idMateria AND inscripcion.idAlumno= ?;";
+        List<Materia> materias=new ArrayList<>();
+        
+        try {
+            PreparedStatement materiasObt= conex.prepareStatement(sql);
+            materiasObt.setInt(1, idAlumno);
+            ResultSet rs=materiasObt.executeQuery();
+            
+            while(rs.next()){
+                Materia materia=new Materia();
+                materia.setIdMateria(rs.getInt("idMateria"));
+                materia.setNombre(rs.getString("nombre"));
+                materia.setAnio(rs.getInt("anio"));
+                materias.add(materia);
+            }
+            materiasObt.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al conectar con tabla inscripcion");
+        }
+        return materias;        
+    }
+    
+    public List<Materia> materiasNOInscriptas(int idAlumno){
+        String sql="SELECT * FROM materia WHERE estado=1 AND idMateria NOT IN "
+                + "(SELECT idMateria FROM inscripcion WHERE idAlumno = ?)";
+        List<Materia> materias=new ArrayList<>();
+        
+        try {
+            PreparedStatement materiasObt= conex.prepareStatement(sql);
+            materiasObt.setInt(1, idAlumno);
+            ResultSet rs=materiasObt.executeQuery();
+            
+            while(rs.next()){
+                Materia materia=new Materia();
+                materia.setIdMateria(rs.getInt("idMateria"));
+                materia.setNombre(rs.getString("nombre"));
+                materia.setAnio(rs.getInt("anio"));
+                materias.add(materia);
+            }
+            materiasObt.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al conectar con tabla inscripcion");
+        }
+        return materias;        
+    }
 }

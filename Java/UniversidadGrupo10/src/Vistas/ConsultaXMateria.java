@@ -4,17 +4,36 @@
  */
 package Vistas;
 
+import AccesoADatos.InscripcionData;
+import AccesoADatos.MateriaData;
+import Dominio.Alumno;
+import Dominio.Materia;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author pablo
  */
 public class ConsultaXMateria extends javax.swing.JInternalFrame {
+    private List<Materia> materias;
+    private List<Alumno> alumnos;
+    private MateriaData materiaData;
+    private InscripcionData inscripcionData;
+    private DefaultTableModel modelo;
 
     /**
      * Creates new form ConsultaXMateri
      */
     public ConsultaXMateria() {
-        initComponents();
+        initComponents();        
+        materiaData=new MateriaData();
+        inscripcionData=new InscripcionData();
+        materias=materiaData.listarMaterias();
+        modelo=new DefaultTableModel();
+        listaMateria();
+        cabecera();
     }
 
     /**
@@ -37,7 +56,11 @@ public class ConsultaXMateria extends javax.swing.JInternalFrame {
 
         jlSeleccion.setText("Seleccione una Materia");
 
-        jcbMaterias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbMateriasActionPerformed(evt);
+            }
+        });
 
         jtTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -53,21 +76,16 @@ public class ConsultaXMateria extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jtTabla);
 
         jbSalir.setText("Salir");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jlSeleccion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jcbMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -77,6 +95,15 @@ public class ConsultaXMateria extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jlTitulo)
                         .addGap(106, 106, 106))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jlSeleccion)
+                        .addGap(18, 18, 18)
+                        .addComponent(jcbMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,11 +123,50 @@ public class ConsultaXMateria extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jcbMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMateriasActionPerformed
+        // TODO add your handling code here:
+        borrarfila();
+        Materia seleccion=(Materia)jcbMaterias.getSelectedItem();
+        alumnos=inscripcionData.obtenerAlumnosXMateria(seleccion.getIdMateria());
+        for(Alumno alumnos:alumnos){
+            modelo.addRow(new Object[]{alumnos.getIdAlumno(), alumnos.getDni(), alumnos.getApellido(), alumnos.getNombre() });            
+        }
+    }//GEN-LAST:event_jcbMateriasActionPerformed
+
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jbSalirActionPerformed
+
+     private void listaMateria(){
+        for(Materia lista:materias){
+            jcbMaterias.addItem(lista);
+        }
+    }
+    
+    private void cabecera(){
+        ArrayList<Object> titulos=new ArrayList<>();
+        titulos.add("ID");
+        titulos.add("DNI");
+        titulos.add("APELLIDO");
+        titulos.add("NOMBRE");
+        for(Object filas:titulos){
+            modelo.addColumn(filas);
+        }
+        jtTabla.setModel(modelo);
+    }
+     
+    private void borrarfila(){
+        int indice= modelo.getRowCount()-1;
+        for(int i = indice;i>=0;i--){
+            modelo.removeRow(i);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbSalir;
-    private javax.swing.JComboBox<String> jcbMaterias;
+    private javax.swing.JComboBox<Materia> jcbMaterias;
     private javax.swing.JLabel jlSeleccion;
     private javax.swing.JLabel jlTitulo;
     private javax.swing.JTable jtTabla;

@@ -153,11 +153,7 @@ public class UniversidadGrupo10 {
         
         //               Probando el metodo borrarInscripcion
         
-        //obtenerInscripcion.eliminarInscripcionMateriAlumno(10, 9);
-        
-        
-        
-        
+        //obtenerInscripcion.eliminarInscripcionMateriAlumno(10, 9);       
         
         //          Probando metodo ListarInscripciones
         
@@ -172,11 +168,10 @@ public class UniversidadGrupo10 {
             System.out.println("ID Inscripto: " + inscripcion.getIdInscripto());
         
         }
-       */
-        
-        
+       */       
         
         //              Probando metodo obtenerAlumnosXMateria
+        
         /*
         List<Alumno> alumnosXMateria = obtenerInscripcion.obtenerAlumnosXMateria(2);
 
@@ -189,10 +184,10 @@ public class UniversidadGrupo10 {
             System.out.println("DNI: " + alumno.getDni());
             System.out.println("FechaNacimiento: " + alumno.getFechaDeNacimiento());
         }
-
         */
         
-       //            
+       //               Probando metodo obtenerInscripcionesPorAlumno
+       
        /*
        List<Inscripcion> inscripcionesXAlumnos = obtenerInscripcion.obtenerInscripcionesPorAlumno(9);
         
@@ -204,6 +199,31 @@ public class UniversidadGrupo10 {
             System.out.println("Nota: " + inscri.getNota());
         }
         */
-    } 
-    
+       
+       //               Probando metodo materiasInscriptas
+       
+       /*
+       List<Materia> materias=obtenerInscripcion.materiasInscriptas(9);
+       
+       for(Materia inscri:materias){
+           System.out.println("--------------------");
+           System.out.println("ID: "+inscri.getIdMateria());
+           System.out.println("Nombre: "+inscri.getNombre());
+           System.out.println("Año: "+inscri.getAnio());
+       }
+       */
+       
+       //              Probando metodo materiasNOInscriptas
+       
+       /*
+        List<Materia> materias=obtenerInscripcion.materiasNOInscriptas(9);
+       
+       for(Materia inscri:materias){
+           System.out.println("--------------------");
+           System.out.println("ID: "+inscri.getIdMateria());
+           System.out.println("Nombre: "+inscri.getNombre());
+           System.out.println("Año: "+inscri.getAnio());
+       }
+       */
+    }     
 }

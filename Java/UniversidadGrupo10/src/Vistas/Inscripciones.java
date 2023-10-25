@@ -8,9 +8,11 @@ import AccesoADatos.AlumnoData;
 import AccesoADatos.InscripcionData;
 import AccesoADatos.MateriaData;
 import Dominio.Alumno;
+import Dominio.Inscripcion;
 import Dominio.Materia;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -70,8 +72,18 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         jlTituloMateria.setText("Listado de Materias");
 
         jcbMateriaIns.setText("Materias Inscriptas");
+        jcbMateriaIns.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbMateriaInsActionPerformed(evt);
+            }
+        });
 
         jcbMateriaNoIns.setText("Materias NO Inscriptas");
+        jcbMateriaNoIns.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbMateriaNoInsActionPerformed(evt);
+            }
+        });
 
         jtTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -95,9 +107,19 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         });
 
         jbSalir.setText("Salir");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
 
         jbAnular.setText("Anular Inscripcion");
         jbAnular.setEnabled(false);
+        jbAnular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAnularActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,27 +135,24 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                         .addComponent(jlTituloMateria)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jlSeleccion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jcbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jcbMateriaIns)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jcbMateriaNoIns))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jbInscribir)
-                                .addGap(59, 59, 59)
-                                .addComponent(jbAnular)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jbSalir))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(33, 33, 33)
+                        .addComponent(jcbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jcbMateriaIns)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jcbMateriaNoIns))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jbInscribir)
+                            .addGap(59, 59, 59)
+                            .addComponent(jbAnular)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jbSalir))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -166,7 +185,59 @@ public class Inscripciones extends javax.swing.JInternalFrame {
 
     private void jbInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscribirActionPerformed
         // TODO add your handling code here:
+        int seleccion=jtTabla.getSelectedRow();
+        if(seleccion!=-1){
+            Alumno alumno=(Alumno)jcbAlumnos.getSelectedItem();
+            
+            int idMateria=(Integer)modelo.getValueAt(seleccion,0);
+            String nombre=(String)modelo.getValueAt(seleccion,1);
+            int anio=(Integer)modelo.getValueAt(seleccion,2);
+            Materia materia= new Materia(idMateria,nombre,anio,true);
+            
+            Inscripcion inscripcion=new Inscripcion(0,alumno,materia);
+            inscripcionData.guardarInscripcion(inscripcion);
+            borrarFila();            
+        }else{
+            JOptionPane.showMessageDialog(null,"Seleccione una Materia");
+        }
     }//GEN-LAST:event_jbInscribirActionPerformed
+
+    private void jbAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAnularActionPerformed
+        // TODO add your handling code here:
+        int seleccion=jtTabla.getSelectedRow();
+        if(seleccion!=-1){
+            Alumno alumno=(Alumno)jcbAlumnos.getSelectedItem();
+            
+            int idMateria=(Integer)modelo.getValueAt(seleccion,0);           
+            inscripcionData.eliminarInscripcionMateriAlumno(alumno.getIdAlumno(), idMateria);
+            borrarFila();            
+        }else{
+            JOptionPane.showMessageDialog(null,"Seleccione una Materia");
+        }        
+    }//GEN-LAST:event_jbAnularActionPerformed
+
+    private void jcbMateriaInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMateriaInsActionPerformed
+        // TODO add your handling code here:
+        borrarFila();
+        jcbMateriaNoIns.setSelected(false);
+        cargaInscriptos();
+        jbAnular.setEnabled(true);
+        jbInscribir.setEnabled(false);       
+    }//GEN-LAST:event_jcbMateriaInsActionPerformed
+
+    private void jcbMateriaNoInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMateriaNoInsActionPerformed
+        // TODO add your handling code here:
+        borrarFila();
+        jcbMateriaIns.setSelected(false);
+        cargaNOInscriptos();
+        jbInscribir.setEnabled(true);
+        jbAnular.setEnabled(false);
+    }//GEN-LAST:event_jcbMateriaNoInsActionPerformed
+
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jbSalirActionPerformed
 
     private void listaAlumnos(){
         for(Alumno lista:Alumnos){
@@ -175,13 +246,21 @@ public class Inscripciones extends javax.swing.JInternalFrame {
     }
     
     private void cargaInscriptos(){
-        Alumno selecion=(Alumno)jcbAlumnos.getSelectedItem();
+        Alumno seleccion=(Alumno)jcbAlumnos.getSelectedItem();
+        Materias=inscripcionData.materiasInscriptas(seleccion.getIdAlumno());
         
+         for(Materia lista:Materias){
+            modelo.addRow(new Object[]{lista.getIdMateria(), lista.getNombre(), lista.getAnio()});
+        }
     }
     
     private void cargaNOInscriptos(){
-        Alumno selecion=(Alumno)jcbAlumnos.getSelectedItem();
+        Alumno seleccion=(Alumno)jcbAlumnos.getSelectedItem();
+        Materias= inscripcionData.materiasNOInscriptas(seleccion.getIdAlumno());
         
+        for(Materia lista:Materias){
+            modelo.addRow(new Object[]{lista.getIdMateria(), lista.getNombre(), lista.getAnio()});
+        }
     }
     
     private void cabecera(){
