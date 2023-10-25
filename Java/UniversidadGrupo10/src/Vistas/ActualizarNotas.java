@@ -163,10 +163,8 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
         Alumno seleccion=(Alumno)jcbAlumnos.getSelectedItem();
         Materias=inscripcionData.materiasInscriptas(seleccion.getIdAlumno());
         for(Materia materia:Materias){
-            modelo.addRow(new Object[]{materia.getIdMateria(), materia.getNombre(), });
-            
-        }
-        
+            modelo.addRow(new Object[]{materia.getIdMateria(), materia.getNombre(), });            
+        }        
     }//GEN-LAST:event_jcbAlumnosActionPerformed
 
     private void listaAlumnos(){
