@@ -21,128 +21,87 @@ public class MateriaData {
        conex = Conexion.conectar();
     }
     
-    public void guardarMateria(Materia materia){
-         
+    public void guardarMateria(Materia materia){         
         String sql = "INSERT  INTO materia (nombre, anio, estado)"
                 + " VALUES (?,?,?)";
         
-        try {
-            
-            
+        try {           
             PreparedStatement guardar = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);//Investicar Return Generated Keys
             guardar.setString(1,materia.getNombre());
             guardar.setInt(2, materia.getAnio());
-            guardar.setBoolean(3, true);
-            
-            guardar.executeUpdate();
-            
-           
-             ResultSet rs = guardar.getGeneratedKeys();
+            guardar.setBoolean(3, true);            
+            guardar.executeUpdate();           
+            ResultSet rs = guardar.getGeneratedKeys();
             
             if(rs.next()){
-                materia.setIdMateria(rs.getInt("idMateria"));
-            
-            }
-            
-            guardar.close();
-            
+                materia.setIdMateria(rs.getInt("idMateria"));           
+            }            
+            guardar.close();            
         } catch (SQLException ex) {
             JOptionPane.showConfirmDialog(null, "Error al guardar la Materia");
-        }
-        
-        
-    }
-    
+        }       
+    }    
 
-    public Materia buscarMateria(int id){
-        
+    public Materia buscarMateria(int id){        
         String sql = "SELECT * FROM materia WHERE idMateria = ? AND estado = 1";
         Materia mat = null;
         
-        try {
-            
-            
+        try {           
             PreparedStatement buscar = conex.prepareStatement(sql);
             buscar.setInt(1, id);
             ResultSet result = buscar.executeQuery();
             
-          if(result.next()){
-          
-              
+            if(result.next()){             
                int idd = result.getInt("idMateria");
                String nom = result.getString("nombre");
                int anio = result.getInt("anio");
                
-               mat = new Materia(idd, nom, anio, true);
-              
+               mat = new Materia(idd, nom, anio, true);           
           }else{
-               System.out.println("Materia no encontrada");
-
+               JOptionPane.showMessageDialog(null,"Materia no encontrada");
           }
-          
-            
-            
+            buscar.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al buscar la Materia");
-        }
-    
-        return mat;
-        
+        }    
+        return mat;        
     }
-
     
-    public void modificarMateria(Materia materia){
-    
+    public void modificarMateria(Materia materia){    
         String sql = "UPDATE  materia SET nombre = ?, anio = ? WHERE idMateria = ?";
         
         try {
             PreparedStatement modi = conex.prepareStatement(sql);
             modi.setString(1, materia.getNombre());
             modi.setInt(2, materia.getAnio());
-            modi.setInt(3, materia.getIdMateria());
-            
+            modi.setInt(3, materia.getIdMateria());            
             modi.executeUpdate();
-            
-        } catch (SQLException ex) {
-            
-           JOptionPane.showMessageDialog(null, "Error de conexion");
-            
-        }
-        
-        
-        
+            modi.close();
+        } catch (SQLException ex) {            
+           JOptionPane.showMessageDialog(null, "Error de conexion");            
+        }        
     }
     
     public void eliminarMateria(int id){
         String sql = "UPDATE materia SET estado = false WHERE idMateria = ?";
         
-        try {
-         
-            
+        try {           
             PreparedStatement eliminar = conex.prepareStatement(sql);
             eliminar.setInt(1, id);
             eliminar.executeUpdate();
-            
+            eliminar.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error de conexion");
-        }
-        
-        
-        
+        }       
     }
     
-    public List<Materia> listarMaterias(){
-    
-        String sql = "SELECT * FROM materia WHERE estado = 1";
-        
-       
+    public List<Materia> listarMaterias(){    
+        String sql = "SELECT * FROM materia WHERE estado = 1";      
         List<Materia> listado;
         listado = new ArrayList<>();
         
-        try {
-            
-            PreparedStatement listar = conex.prepareStatement(sql);
-            
+        try {            
+            PreparedStatement listar = conex.prepareStatement(sql);            
             ResultSet list = listar.executeQuery();
             
             while(list.next()){
@@ -150,17 +109,12 @@ public class MateriaData {
                 materia.setIdMateria(list.getInt("idMateria"));
                 materia.setNombre(list.getString("nombre"));
                 materia.setAnio(list.getInt("anio"));
-                listado.add(materia);
- 
+                listado.add(materia); 
             }
-            
+            listar.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conecectar con la tabla Materia");
-        }
-        
-        
+        }       
         return listado;
-    }
-    
-    
+    }   
 }

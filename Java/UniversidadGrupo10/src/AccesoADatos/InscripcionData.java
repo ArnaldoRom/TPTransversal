@@ -67,7 +67,8 @@ public class InscripcionData {
                 obt.setIdMateria(materia);
            
                 listaObtenida.add(obt);                
-            }            
+            }
+            list.close();
         }catch (SQLException ex) {            
            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla Incripcion");
         }   
@@ -97,7 +98,8 @@ public class InscripcionData {
                 newIns.setIdMateria(materia);     
             
                 inscripcionPorAlumno.add(newIns);
-            }        
+            }
+            obt.close();
         }catch (SQLException ex) {
         JOptionPane.showMessageDialog(null, "Error al conectar con Inscripcion.");
         }    
@@ -105,19 +107,20 @@ public class InscripcionData {
     }
     
     public void eliminarInscripcionMateriAlumno(int idAlumno, int idMateria) {
-        String sql = "UPDATE inscripcion SET estado = 0 WHERE idAlumno = ? AND idMateria = ?";     
+        String sql = "DELETE FROM inscripcion WHERE idAlumno = ? AND idMateria = ?";     
     
         try {
-            PreparedStatement actualizar = conex.prepareStatement(sql);
-            actualizar.setInt(1, idAlumno);
-            actualizar.setInt(2, idMateria);        
-            int verificar = actualizar.executeUpdate();  
+            PreparedStatement borrar = conex.prepareStatement(sql);
+            borrar.setInt(1, idAlumno);
+            borrar.setInt(2, idMateria);        
+            int verificar = borrar.executeUpdate();  
             
             if (verificar > 0) {
                JOptionPane.showMessageDialog(null,"Inscripcion eliminada");
             } else {
-               JOptionPane.showMessageDialog(null,"No se encontro ninguna inscripcion activa");
+               JOptionPane.showMessageDialog(null,"No se encontro ninguna inscripcion");
             }
+            borrar.close();
         } catch (SQLException ex) {
         JOptionPane.showMessageDialog(null, "Error al conectar con la tabla insripcion.");
         }
@@ -127,9 +130,19 @@ public class InscripcionData {
         String sql = "UPDATE inscripcion SET nota = ? WHERE idAlumno = ? AND idMateria = ?";     
     
         try {            
-            PreparedStatement actualizar = conex.prepareStatement(sql);           
+            PreparedStatement actualizar = conex.prepareStatement(sql);
+            actualizar.setDouble(1, nota);
+            actualizar.setInt(2, idAlumno);
+            actualizar.setInt(3, idMateria);
+            int listo=actualizar.executeUpdate();
+            
+            if(listo>0){
+                JOptionPane.showMessageDialog(null,"Nota Actualizada");
+            }
+            actualizar.close();
+            
         } catch (SQLException ex) {
-            Logger.getLogger(InscripcionData.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"Error acceso a tabla Inscrpcion");
         }    
     }    
     
@@ -149,6 +162,7 @@ public class InscripcionData {
                    alumnosXMateria.add(alumno);
                 }
             }
+            obt.close();
         }catch(SQLException ex){
         JOptionPane.showMessageDialog(null, "Error al conectar aacon inscripcion");
         }        

@@ -134,8 +134,8 @@ public class UniversidadGrupo10 {
         
         
          //              Probando el metodo guardarAlumno
-        /*
-        AlumnoData alumno1 = new AlumnoData();
+       
+        /*AlumnoData alumno1 = new AlumnoData();
         MateriaData materia1 = new MateriaData();
         
         
@@ -143,9 +143,18 @@ public class UniversidadGrupo10 {
         Alumno alumn = alumno1.buscarAlumnoPorID(11);
         Materia materia = materia1.buscarMateria(12);
         Inscripcion insc = new Inscripcion(7, alumn, materia);
-        
-        obtenerInscripcion.guardarInscripcion(insc);
         */
+        
+        //obtenerInscripcion.guardarInscripcion(insc);
+        
+        //               Probando el metodo actualizarNota
+        
+        //obtenerInscripcion.actualizarNota(11, 12, 10);
+        
+        //               Probando el metodo borrarInscripcion
+        
+        //obtenerInscripcion.eliminarInscripcionMateriAlumno(10, 9);
+        
         
         
         
