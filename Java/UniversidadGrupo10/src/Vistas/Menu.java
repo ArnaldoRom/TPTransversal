@@ -17,9 +17,7 @@ import javax.swing.UIManager;
  */
 public class Menu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Menu
-     */
+    
     public Menu() {
         initComponents();
         ToolTipManager.sharedInstance().setInitialDelay(0);
@@ -53,6 +51,7 @@ public class Menu extends javax.swing.JFrame {
         jmiAlumPorMat = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("                                                                                     Gestión de Alumnos-ULP");
 
         javax.swing.GroupLayout jdEscritorioLayout = new javax.swing.GroupLayout(jdEscritorio);
         jdEscritorio.setLayout(jdEscritorioLayout);
@@ -227,6 +226,7 @@ public class Menu extends javax.swing.JFrame {
          */
         
         UIManager.put("nimbusBase", new Color(44, 62, 80 ));
+        UIManager.put("JFrame.activeTitleBackground", Color.BLUE);
         UIManager.put("nimbusBlueGrey", new Color(93, 109, 126));
         UIManager.put("info", new Color(245, 203, 167 ));        
         UIManager.put("InternalFrame[Enabled+WindowFocused].backgroundPainter", new Color(93, 109, 126));       
