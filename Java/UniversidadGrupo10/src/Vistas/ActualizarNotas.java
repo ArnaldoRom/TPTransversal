@@ -161,7 +161,8 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
         int seleccion=jtTabla.getSelectedRow();
         if(seleccion!=-1){
             int idMateria=(Integer)modelo.getValueAt(seleccion, 0);
-            double nota=(Double)modelo.getValueAt(seleccion,2);             
+            System.out.println(modelo.getValueAt(seleccion,2).toString().length());
+            double nota=Double.parseDouble((String)modelo.getValueAt(seleccion,2));             
             inscripcionData.actualizarNota(alumno.getIdAlumno(), idMateria, nota); 
             borrarfila();
             jbGuardar.setEnabled(false);
