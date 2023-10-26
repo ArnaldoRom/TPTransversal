@@ -227,8 +227,9 @@ public class Menu extends javax.swing.JFrame {
          */
         
         UIManager.put("nimbusBase", new Color(44, 62, 80 ));
-        UIManager.put("nimbusBlueGrey", new Color(93, 109, 126));        
-        
+        UIManager.put("nimbusBlueGrey", new Color(93, 109, 126));
+        UIManager.put("info", new Color(245, 203, 167 ));        
+        UIManager.put("InternalFrame[Enabled+WindowFocused].backgroundPainter", new Color(93, 109, 126));       
 
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
