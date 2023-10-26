@@ -57,6 +57,12 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
         jbGuardar = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
 
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                formMouseEntered(evt);
+            }
+        });
+
         jlTitulo.setText("Carga de Notas");
 
         jlSeleccion.setText("Seleccione un Alumno:");
@@ -85,7 +91,7 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jtTabla);
 
-        jbGuardar.setText("Guardar");
+        jbGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/guardar.gif"))); // NOI18N
         jbGuardar.setEnabled(false);
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,7 +99,7 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
             }
         });
 
-        jbSalir.setText("Salir");
+        jbSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salir.gif"))); // NOI18N
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbSalirActionPerformed(evt);
@@ -118,9 +124,9 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
                                 .addComponent(jcbAlumnos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jbGuardar)
+                                    .addComponent(jbGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(48, 48, 48)
-                                    .addComponent(jbSalir))
+                                    .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(17, 17, 17))))
         );
@@ -132,12 +138,12 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlSeleccion)
                     .addComponent(jcbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbGuardar)
-                    .addComponent(jbSalir))
+                    .addComponent(jbGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36))
         );
 
@@ -150,8 +156,7 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
         int seleccion=jtTabla.getSelectedRow();
         if(seleccion!=-1){
             int idMateria=(Integer)modelo.getValueAt(seleccion, 0);
-            double nota=(Double)modelo.getValueAt(seleccion,2);
-            
+            double nota=(Double)modelo.getValueAt(seleccion,2);            
             inscripcionData.actualizarNota(alumno.getIdAlumno(), idMateria, nota); 
             borrarfila();
             jbGuardar.setEnabled(false);
@@ -185,6 +190,12 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
             modelo.addRow(new Object[]{materia.getIdMateria(), materia.getNombre(),nota });            
         }        
     }//GEN-LAST:event_jcbAlumnosActionPerformed
+
+    private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
+        // TODO add your handling code here:
+        jbGuardar.setToolTipText("Guardar");
+        jbSalir.setToolTipText("Salir");
+    }//GEN-LAST:event_formMouseEntered
 
     private void listaAlumnos(){
         for(Alumno lista:Alumnos){

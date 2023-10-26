@@ -52,6 +52,12 @@ public class ConsultaXMateria extends javax.swing.JInternalFrame {
         jtTabla = new javax.swing.JTable();
         jbSalir = new javax.swing.JButton();
 
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                formMouseEntered(evt);
+            }
+        });
+
         jlTitulo.setText("Listado de alumnos por materia");
 
         jlSeleccion.setText("Seleccione una Materia:");
@@ -75,7 +81,7 @@ public class ConsultaXMateria extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jtTabla);
 
-        jbSalir.setText("Salir");
+        jbSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salir.gif"))); // NOI18N
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbSalirActionPerformed(evt);
@@ -90,7 +96,7 @@ public class ConsultaXMateria extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jbSalir)
+                        .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jlTitulo)
@@ -115,8 +121,8 @@ public class ConsultaXMateria extends javax.swing.JInternalFrame {
                     .addComponent(jcbMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(jbSalir)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
 
@@ -137,6 +143,11 @@ public class ConsultaXMateria extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
+
+    private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
+        // TODO add your handling code here:
+        jbSalir.setToolTipText("Salir");
+    }//GEN-LAST:event_formMouseEntered
 
      private void listaMateria(){
         for(Materia lista:materias){

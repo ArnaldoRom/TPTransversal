@@ -4,6 +4,9 @@
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="formMouseEntered"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -46,11 +49,11 @@
                       <Component id="jcbMateriaNoIns" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jbInscribir" min="-2" max="-2" attributes="0"/>
+                      <Component id="jbInscribir" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                      <Component id="jbAnular" min="-2" max="-2" attributes="0"/>
+                      <Component id="jbAnular" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jbSalir" min="-2" max="-2" attributes="0"/>
+                      <Component id="jbSalir" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane1" alignment="0" min="-2" pref="383" max="-2" attributes="0"/>
               </Group>
@@ -77,11 +80,11 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="157" max="-2" attributes="0"/>
-              <EmptySpace pref="71" max="32767" attributes="0"/>
+              <EmptySpace pref="7" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jbInscribir" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jbSalir" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jbAnular" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jbInscribir" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="jbSalir" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="jbAnular" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
           </Group>
@@ -153,7 +156,9 @@
     </Container>
     <Component class="javax.swing.JButton" name="jbInscribir">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Inscribir"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Recursos/inscribir.gif"/>
+        </Property>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
@@ -162,7 +167,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jbSalir">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Salir"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Recursos/salir.gif"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbSalirActionPerformed"/>
@@ -170,7 +177,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jbAnular">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Anular Inscripcion"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Recursos/anular.gif"/>
+        </Property>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>

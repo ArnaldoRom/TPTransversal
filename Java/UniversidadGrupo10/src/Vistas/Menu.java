@@ -10,6 +10,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.ToolTipManager;
 import javax.swing.UIManager;
+import javax.swing.plaf.ColorUIResource;
 
 /**
  *
@@ -209,7 +210,7 @@ public class Menu extends javax.swing.JFrame {
          */
         
         UIManager.put("nimbusBase", new Color(44, 62, 80 ));
-        UIManager.put("nimbusBlueGrey", new Color(93, 109, 126));   
+        UIManager.put("nimbusBlueGrey", new Color(93, 109, 126));        
         
 
         try {

@@ -65,6 +65,12 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         jbSalir = new javax.swing.JButton();
         jbAnular = new javax.swing.JButton();
 
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                formMouseEntered(evt);
+            }
+        });
+
         jlTitulo.setText("Inscripcion");
 
         jlSeleccion.setText("Seleccion de Alumno:");
@@ -98,7 +104,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jtTabla);
 
-        jbInscribir.setText("Inscribir");
+        jbInscribir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/inscribir.gif"))); // NOI18N
         jbInscribir.setEnabled(false);
         jbInscribir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,14 +112,14 @@ public class Inscripciones extends javax.swing.JInternalFrame {
             }
         });
 
-        jbSalir.setText("Salir");
+        jbSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salir.gif"))); // NOI18N
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbSalirActionPerformed(evt);
             }
         });
 
-        jbAnular.setText("Anular Inscripcion");
+        jbAnular.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/anular.gif"))); // NOI18N
         jbAnular.setEnabled(false);
         jbAnular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,11 +152,11 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jcbMateriaNoIns))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jbInscribir)
+                        .addComponent(jbInscribir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(59, 59, 59)
-                        .addComponent(jbAnular)
+                        .addComponent(jbAnular, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbSalir))
+                        .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 54, Short.MAX_VALUE))
         );
@@ -171,11 +177,11 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                     .addComponent(jcbMateriaNoIns))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbInscribir)
-                    .addComponent(jbSalir)
-                    .addComponent(jbAnular))
+                    .addComponent(jbInscribir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbAnular, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(61, 61, 61))
         );
 
@@ -237,6 +243,13 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
+
+    private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
+        // TODO add your handling code here:
+        jbInscribir.setToolTipText("Inscribir");
+        jbAnular.setToolTipText("Anular Inscripcion");
+        jbSalir.setToolTipText("Salir");
+    }//GEN-LAST:event_formMouseEntered
 
     private void listaAlumnos(){
         for(Alumno lista:Alumnos){
