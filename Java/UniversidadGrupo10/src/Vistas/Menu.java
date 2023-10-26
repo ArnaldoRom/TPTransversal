@@ -10,7 +10,6 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.ToolTipManager;
 import javax.swing.UIManager;
-import javax.swing.plaf.ColorUIResource;
 
 /**
  *
@@ -63,16 +62,20 @@ public class Menu extends javax.swing.JFrame {
         );
         jdEscritorioLayout.setVerticalGroup(
             jdEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 502, Short.MAX_VALUE)
+            .addGap(0, 488, Short.MAX_VALUE)
         );
 
+        jmAlumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Alumnos.png"))); // NOI18N
         jmAlumno.setText("Alumno");
+        jmAlumno.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jmAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmAlumnoActionPerformed(evt);
             }
         });
 
+        jmiFormulario.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jmiFormulario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/formulario.png"))); // NOI18N
         jmiFormulario.setText("Formulario");
         jmiFormulario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,8 +86,12 @@ public class Menu extends javax.swing.JFrame {
 
         jMenu.add(jmAlumno);
 
+        jmMateria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Materias.png"))); // NOI18N
         jmMateria.setText("Materia");
+        jmMateria.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
 
+        jmiForMat.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jmiForMat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/formulario.png"))); // NOI18N
         jmiForMat.setText("Formulario");
         jmiForMat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,8 +102,12 @@ public class Menu extends javax.swing.JFrame {
 
         jMenu.add(jmMateria);
 
+        jmAdministracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Admi.png"))); // NOI18N
         jmAdministracion.setText("Administracion");
+        jmAdministracion.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
 
+        jmiInscripcion.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jmiInscripcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/consulta1.png"))); // NOI18N
         jmiInscripcion.setText("Inscripciones");
         jmiInscripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,6 +116,8 @@ public class Menu extends javax.swing.JFrame {
         });
         jmAdministracion.add(jmiInscripcion);
 
+        jmiNotas.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jmiNotas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/consulta1.png"))); // NOI18N
         jmiNotas.setText("Notas");
         jmiNotas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,8 +128,12 @@ public class Menu extends javax.swing.JFrame {
 
         jMenu.add(jmAdministracion);
 
+        jmConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/consulta.png"))); // NOI18N
         jmConsulta.setText("Consulta");
+        jmConsulta.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
 
+        jmiAlumPorMat.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jmiAlumPorMat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/inscripto.png"))); // NOI18N
         jmiAlumPorMat.setText("Alumno por Materia");
         jmiAlumPorMat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,8 +212,8 @@ public class Menu extends javax.swing.JFrame {
         jdEscritorio.repaint();
         FormularioAlumno forAlum=new FormularioAlumno();
         forAlum.setVisible(true);
-        jdEscritorio.add(forAlum);       
-        jdEscritorio.moveToFront(forAlum);   
+        jdEscritorio.add(forAlum);
+        jdEscritorio.moveToFront(forAlum);
     }//GEN-LAST:event_jmiFormularioActionPerformed
 
     /**

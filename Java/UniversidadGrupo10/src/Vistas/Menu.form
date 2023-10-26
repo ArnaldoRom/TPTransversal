@@ -6,7 +6,13 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jmAlumno">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Recursos/Alumnos.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Alumno"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI Black" size="12" style="1"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmAlumnoActionPerformed"/>
@@ -14,6 +20,12 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmiFormulario">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Black" size="12" style="1"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Recursos/formulario.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Formulario"/>
               </Properties>
               <Events>
@@ -24,11 +36,23 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jmMateria">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Recursos/Materias.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Materia"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI Black" size="12" style="1"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmiForMat">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Black" size="12" style="1"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Recursos/formulario.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Formulario"/>
               </Properties>
               <Events>
@@ -39,11 +63,23 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jmAdministracion">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Recursos/Admi.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Administracion"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI Black" size="12" style="1"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmiInscripcion">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Black" size="12" style="1"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Recursos/consulta1.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Inscripciones"/>
               </Properties>
               <Events>
@@ -52,6 +88,12 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmiNotas">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Black" size="12" style="1"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Recursos/consulta1.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Notas"/>
               </Properties>
               <Events>
@@ -62,11 +104,23 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jmConsulta">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Recursos/consulta.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Consulta"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI Black" size="12" style="1"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmiAlumPorMat">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Black" size="12" style="1"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Recursos/inscripto.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Alumno por Materia"/>
               </Properties>
               <Events>
@@ -125,7 +179,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="502" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="488" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
