@@ -58,8 +58,6 @@ public class MateriaData {
                int anio = result.getInt("anio");
                
                mat = new Materia(idd, nom, anio, true);           
-          }else{
-               JOptionPane.showMessageDialog(null,"Materia no encontrada");
           }
             buscar.close();
         } catch (SQLException ex) {

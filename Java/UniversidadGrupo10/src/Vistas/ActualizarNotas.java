@@ -34,8 +34,7 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
         modelo=new DefaultTableModel();
         alumnoData=new AlumnoData();
         inscripcionData=new InscripcionData();
-        Alumnos=alumnoData.listarAlumnos(); 
-        Inscripciones=inscripcionData.obtenerInscripciones();
+        Alumnos=alumnoData.listarAlumnos();       
         listaAlumnos();
         cabecera();
     }
@@ -184,17 +183,17 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         borrarfila();
         Alumno seleccion=(Alumno)jcbAlumnos.getSelectedItem();
-        Materias=inscripcionData.materiasInscriptas(seleccion.getIdAlumno());     
-               
-        for(Materia materia: Materias){
-            double nota=0;
+        Inscripciones=inscripcionData.obtenerInscripcionesPorAlumno(seleccion.getIdAlumno());               
+     
             for(Inscripcion obtener:Inscripciones){
-                if(obtener.getIdAlumno().getIdAlumno()== seleccion.getIdAlumno() && obtener.getIdMateria().getIdMateria()== materia.getIdMateria()){
-                    nota=obtener.getNota();                    
+                      
+                  if(obtener.getIdMateria()!=null){
+                      modelo.addRow(new Object[]{obtener.getIdMateria().getIdMateria(), obtener.getIdMateria().getNombre(), obtener.getNota()}); 
+                  }
                 }
-            }
-            modelo.addRow(new Object[]{materia.getIdMateria(), materia.getNombre(),nota });            
-        }        
+            
+                      
+                
     }//GEN-LAST:event_jcbAlumnosActionPerformed
 
     private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
@@ -207,6 +206,7 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
         for(Alumno lista:Alumnos){
             jcbAlumnos.addItem(lista);
         }
+        jcbAlumnos.setSelectedItem(0);
     }
     
     private void cabecera(){
