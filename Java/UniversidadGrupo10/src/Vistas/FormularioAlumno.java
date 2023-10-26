@@ -229,8 +229,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
            alumno.setNombre(nombre);
            alumno.setFechaDeNacimiento(fN);
            alumnoData.actualizarDatosAlumno(alumno);
-       }  
-       
+       }        
        limpiar();
        
        }catch(NumberFormatException ex){           

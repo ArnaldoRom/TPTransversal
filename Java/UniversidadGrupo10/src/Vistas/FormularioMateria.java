@@ -21,6 +21,7 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
      */
     public FormularioMateria() {
         initComponents();
+        Desabilitar();
     }
 
     /**
@@ -186,6 +187,7 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         // TODO add your handling code here:
+        habilitar();
         try{
             int codigo=Integer.parseInt(jtfCodigo.getText());
             String anio;
@@ -205,6 +207,7 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
         // TODO add your handling code here:
+        habilitar();
         limpiar();
         materia=null;
     }//GEN-LAST:event_jbNuevoActionPerformed
@@ -230,6 +233,7 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
                 materia.setEstado(true);
                 materiaData.modificarMateria(materia);
             }
+            limpiar();
             
         }catch(NumberFormatException nf){
             JOptionPane.showMessageDialog(null,"Ingrese numero valido");
@@ -269,6 +273,19 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         jcbEstado.setSelected(false);
         
     }
+    
+     private void habilitar(){
+         jtfNombre.setEnabled(true);
+         jtfAnio.setEnabled(true);
+         jcbEstado.setEnabled(true);
+         
+     }
+     
+     private void Desabilitar(){
+         jtfNombre.setEnabled(false);
+         jtfAnio.setEnabled(false);
+         jcbEstado.setEnabled(false);
+     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbBuscar;

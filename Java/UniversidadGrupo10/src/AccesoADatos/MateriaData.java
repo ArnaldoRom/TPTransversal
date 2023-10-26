@@ -34,7 +34,8 @@ public class MateriaData {
             ResultSet rs = guardar.getGeneratedKeys();
             
             if(rs.next()){
-                materia.setIdMateria(rs.getInt("idMateria"));           
+                materia.setIdMateria(rs.getInt("idMateria"));
+                JOptionPane.showMessageDialog(null,"Materia Añadida");
             }            
             guardar.close();            
         } catch (SQLException ex) {
@@ -75,7 +76,10 @@ public class MateriaData {
             modi.setString(1, materia.getNombre());
             modi.setInt(2, materia.getAnio());
             modi.setInt(3, materia.getIdMateria());            
-            modi.executeUpdate();
+            int modificar=modi.executeUpdate();
+            if(modificar==1){
+                JOptionPane.showMessageDialog(null,"Materia modificada");
+            }
             modi.close();
         } catch (SQLException ex) {            
            JOptionPane.showMessageDialog(null, "Error de conexion");            
@@ -88,7 +92,10 @@ public class MateriaData {
         try {           
             PreparedStatement eliminar = conex.prepareStatement(sql);
             eliminar.setInt(1, id);
-            eliminar.executeUpdate();
+            int aliminado=eliminar.executeUpdate();
+            if(aliminado==1){
+                JOptionPane.showMessageDialog(null,"Materia Eliminada");
+            }
             eliminar.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error de conexion");

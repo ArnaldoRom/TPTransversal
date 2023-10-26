@@ -59,7 +59,7 @@ public class Materia {
 
     @Override
     public String toString() {
-        return nombre;
+        return "Cod: "+idMateria+" - "+nombre;
     }  
     
 }
