@@ -26,6 +26,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
      */
     public FormularioAlumno() {
         initComponents();
+        Desabilitar();
         
     }
 
@@ -228,7 +229,9 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
            alumno.setNombre(nombre);
            alumno.setFechaDeNacimiento(fN);
            alumnoData.actualizarDatosAlumno(alumno);
-       }       
+       }  
+       
+       limpiar();
        
        }catch(NumberFormatException ex){           
            JOptionPane.showMessageDialog(this, "Ingrese un DNI valido", "Error", HEIGHT);       
@@ -237,6 +240,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         // TODO add your handling code here:
+        habilitar();
          try{
             int dni=Integer.parseInt(jtDocumento.getText());
             alumno=alumnoData.buscarAlumnoPorDNI(dni);
@@ -259,6 +263,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
         // TODO add your handling code here:
+        habilitar();
         limpiar();
         alumno=null;
     }//GEN-LAST:event_jbNuevoActionPerformed
@@ -295,6 +300,20 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         jcbEstado.setSelected(false);
         jCalendario.setDate(null);     
     }
+     
+     private void habilitar(){
+         jtApellido.setEnabled(true);
+         jtNombre.setEnabled(true);
+         jcbEstado.setEnabled(true);
+         jCalendario.setEnabled(true);
+     }
+     
+     private void Desabilitar(){
+         jtApellido.setEnabled(false);
+         jtNombre.setEnabled(false);
+         jcbEstado.setEnabled(false);
+         jCalendario.setEnabled(false);
+     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser jCalendario;
