@@ -188,7 +188,7 @@ public class UniversidadGrupo10 {
         
        //               Probando metodo obtenerInscripcionesPorAlumno
        
-       
+       /*
        List<Inscripcion> inscripcionesXAlumnos = obtenerInscripcion.obtenerInscripcionesPorAlumno(3);
         
         for(Inscripcion inscri : inscripcionesXAlumnos){
@@ -198,6 +198,7 @@ public class UniversidadGrupo10 {
             System.out.println("ID Materia" + inscri.getIdMateria());
             System.out.println("Nota: " + inscri.getNota());
         }
+       */
         
        
        //               Probando metodo materiasInscriptas

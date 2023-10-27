@@ -31,7 +31,16 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
      */
     public ActualizarNotas() {
         initComponents();       
-        modelo=new DefaultTableModel();
+        modelo=new DefaultTableModel(){
+
+            @Override
+            public boolean isCellEditable(int f, int c) {
+                if(c==2){
+                    return true;
+                }
+                return false;
+            }
+            };
         alumnoData=new AlumnoData();
         inscripcionData=new InscripcionData();
         Alumnos=alumnoData.listarAlumnos();       
@@ -183,16 +192,14 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         borrarfila();
         Alumno seleccion=(Alumno)jcbAlumnos.getSelectedItem();
-        Inscripciones=inscripcionData.obtenerInscripcionesPorAlumno(seleccion.getIdAlumno());               
+        Inscripciones=inscripcionData.obtenerInscripcionesPorAlumno(seleccion.getIdAlumno());              
      
             for(Inscripcion obtener:Inscripciones){
                       
                   if(obtener.getIdMateria()!=null){
                       modelo.addRow(new Object[]{obtener.getIdMateria().getIdMateria(), obtener.getIdMateria().getNombre(), obtener.getNota()}); 
                   }
-                }
-            
-                      
+                }                   
                 
     }//GEN-LAST:event_jcbAlumnosActionPerformed
 
